@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import ClockControl from './ClockControl';
 import Timer from './Timer';
 
@@ -12,22 +12,26 @@ export default class Clock extends Component {
       running: false
     }
 
-    this.startTimer = this.startTimer.bind(this);
+    this.onTimerStarted = this.onTimerStarted.bind(this);
+    this.onTimerStopped = this.onTimerStopped.bind(this);
   }
 
   render() {
     return(
       <View>
         <Timer timeElapsed={this.state.timeElapsed}/>
+
         <ClockControl
           running={this.state.running}
-          startTimer={this.startTimer}
-          stopTimer={this.stopTimer}/>
+          startTimer={() => this.onTimerStarted}
+          stopTimer={() => this.onTimerStopped}/>
       </View>
     );
   }
 
-  startTimer() {
+  onTimerStarted() {
+    debugger
+    console.log('timer started')
     this.setState({
       startTime: new Date()
     });
@@ -40,7 +44,9 @@ export default class Clock extends Component {
     }, 3000000000000);
   }
 
-  stopTimer() {
+  onTimerStopped() {
+    debugger
+    console.log('timer stopped')
     clearInterval(this.interval);
     this.setState({
       running: false
