@@ -12,7 +12,7 @@ export default class ClockControl extends Component {
     return(
       <View>
         <Button 
-          onPress={() => this.onToggleTimer(this.props.running)}
+          onPress={this.props.startTimer}
           title={this.props.running ? 'Stop' : 'Start'}/>
       </View>
     );

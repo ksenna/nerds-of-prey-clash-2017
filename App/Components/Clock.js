@@ -23,8 +23,8 @@ export default class Clock extends Component {
 
         <ClockControl
           running={this.state.running}
-          startTimer={() => this.onTimerStarted}
-          stopTimer={() => this.onTimerStopped}/>
+          startTimer={this.onTimerStarted}
+          stopTimer={this.onTimerStopped}/>
       </View>
     );
   }
