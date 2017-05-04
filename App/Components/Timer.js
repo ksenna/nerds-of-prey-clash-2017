@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import FormatTime from 'minutes-seconds-milliseconds';
+import moment from 'moment';
 
 export default class Timer extends Component {
   constructor(props) {
@@ -10,8 +11,12 @@ export default class Timer extends Component {
   render() {
     return(
       <View>
-        <Text>{this.props.timeElapsed}</Text>
+        <Text>{this.getFormattedTime()}</Text>
       </View>
     );
+  }
+
+  getFormattedTime() {
+    return moment(this.props.timeElapsed).utcOffset('+0000').format('HH mm ss');
   }
 }

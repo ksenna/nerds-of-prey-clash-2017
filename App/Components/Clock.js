@@ -10,8 +10,8 @@ export default class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startTime: '',
-      timeElapsed: moment().format('hh mm ss'),
+      startTime: moment(),
+      timeElapsed: moment(moment().diff(moment())),
       running: false
     }
 
@@ -24,7 +24,6 @@ export default class Clock extends Component {
     return(
       <View>
         <Timer timeElapsed={this.state.timeElapsed}/>
-        {/*<Text>{this.state.startTime}</Text>*/}
         <ClockControl
           running={this.state.running}
           toggleTimer={this.onTimerToggled}/>
@@ -48,13 +47,14 @@ export default class Clock extends Component {
   onTimerStarted() {
     console.log('timer started')
     this.setState({
-      timeElapsed: moment().format("hh mm ss")
+      timeElapsed: moment(moment().diff(this.state.startTime))
     });
 
     timer.setInterval('testName', () => {
       console.log('tick');
+
       this.setState({
-        timeElapsed: moment().format("hh mm ss"),
+        timeElapsed: moment(moment().diff(this.state.startTime)),
         running: true
       });
     }, 1000);
@@ -64,6 +64,8 @@ export default class Clock extends Component {
     console.log('timer stopped')
     timer.clearInterval('testName');
     this.setState({
+      startTime: moment(),
+      timeElapsed: moment(moment().diff(moment())),
       running: false
     });
   }
