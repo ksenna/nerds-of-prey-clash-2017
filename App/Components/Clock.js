@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import ClockControl from './ClockControl';
 import Timer from './Timer';
 import moment from 'moment';
