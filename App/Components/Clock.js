@@ -47,7 +47,7 @@ export default class Clock extends Component {
   onTimerStarted() {
     console.log('timer started')
     this.setState({
-      timeElapsed: moment(moment().diff(this.state.startTime))
+      startTime: moment()
     });
 
     timer.setInterval('testName', () => {

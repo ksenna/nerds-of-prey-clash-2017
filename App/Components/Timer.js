@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import FormatTime from 'minutes-seconds-milliseconds';
 import moment from 'moment';
 
 export default class Timer extends Component {
