@@ -4,13 +4,17 @@ import {
   Text,
   View
 } from 'react-native';
-import ClockControl from './Components/ClockControl';
+import Clock from './Components/Clock';
 
 export default class NerdsOfPrey extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <ClockControl/>
+        <Clock/>
       </View>
     );
   }
