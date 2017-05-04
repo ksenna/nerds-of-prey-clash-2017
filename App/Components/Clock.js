@@ -27,8 +27,6 @@ export default class Clock extends Component {
         {/*<Text>{this.state.startTime}</Text>*/}
         <ClockControl
           running={this.state.running}
-          startTimer={this.onTimerStarted}
-          stopTimer={this.onTimerStopped}
           toggleTimer={this.onTimerToggled}/>
       </View>
     );
