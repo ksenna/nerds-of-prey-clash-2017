@@ -4,7 +4,8 @@ import {
   Text,
   View
 } from 'react-native';
-import Clock from './Components/Clock';
+import Stopwatch from './Components/Stopwatch';
+import PomodoroTimer from './Components/PomodoroTimer';
 
 export default class NerdsOfPrey extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class NerdsOfPrey extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Clock/>
+        <PomodoroTimer/>
       </View>
     );
   }
