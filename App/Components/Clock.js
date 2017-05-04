@@ -17,6 +17,7 @@ export default class Clock extends Component {
 
     this.onTimerStarted = this.onTimerStarted.bind(this);
     this.onTimerStopped = this.onTimerStopped.bind(this);
+    this.onTimerToggled = this.onTimerToggled.bind(this);
   }
 
   render() {
@@ -27,13 +28,23 @@ export default class Clock extends Component {
         <ClockControl
           running={this.state.running}
           startTimer={this.onTimerStarted}
-          stopTimer={this.onTimerStopped}/>
+          stopTimer={this.onTimerStopped}
+          toggleTimer={this.onTimerToggled}/>
       </View>
     );
   }
 
   componentWillUnmount() {
     timer.clearInterval(this);
+  }
+
+  onTimerToggled() {
+    console.log('toggle');
+    if (this.state.running) {
+      this.onTimerStopped();
+    } else {
+      this.onTimerStarted();
+    }
   }
 
   onTimerStarted() {

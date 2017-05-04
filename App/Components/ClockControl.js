@@ -12,18 +12,9 @@ export default class ClockControl extends Component {
     return(
       <View>
         <Button 
-          onPress={this.props.startTimer}
+          onPress={this.props.toggleTimer}
           title={this.props.running ? 'Stop' : 'Start'}/>
       </View>
     );
   }  
-
-  onToggleTimer(running) {
-    console.log('clicked');
-    if (running) {
-      this.props.stopTimer;
-    } else {
-      this.props.startTimer;
-    }
-  }
 }
