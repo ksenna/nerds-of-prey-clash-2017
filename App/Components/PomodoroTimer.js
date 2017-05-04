@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Clock from './Clock';
 import moment from 'moment';
 
-export default class Stopwatch extends Component {
+export default class PomodoroTimer extends Component {
   constructor(props) {
     super(props);
     this.state = {

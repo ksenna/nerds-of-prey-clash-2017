@@ -1,5 +1,5 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import NerdsOfPrey from './App/index';
+import NavigationRouter from './App/Navigation/NavigationRouter';
 
-AppRegistry.registerComponent('NerdsOfPrey', () => NerdsOfPrey);
+AppRegistry.registerComponent('NerdsOfPrey', () => NavigationRouter);

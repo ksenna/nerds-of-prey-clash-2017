@@ -2,6 +2,8 @@ import React from 'react';
 import {PropTypes} from "react";
 import {Button, StyleSheet, Text, View} from "react-native";
 import { Actions } from 'react-native-router-flux';
+import Stopwatch from '../Components/Stopwatch';
+import PomodoroTImer from '../Components/PomodoroTimer';
 
 const contextTypes = {
   drawer: React.PropTypes.object,
@@ -28,10 +30,16 @@ const TabView = (props, context) => {
     <View style={[styles.container, props.sceneStyle ]}>
       <Text>Tab {props.title}</Text>
       {props.name === 'tab1_1' &&
-        <Button onPress={Actions.tab1_2} title="next screen for tab1_1" />
+        <View>
+          <Button onPress={Actions.tab1_2} title="next screen for pomodoro" />
+          <Stopwatch/>
+        </View>
       }
       {props.name === 'tab2_1' &&
-        <Button onPress={Actions.tab2_2} title="next screen for tab2_1" />
+        <View>
+          <Button onPress={Actions.tab2_2} title="next screen for tab2_1" />
+          <PomodoroTImer/>
+        </View>
       }
       <Button onPress={Actions.pop} title="Back" />
       <Button onPress={Actions.tab1} title="Switch to tab1" />
