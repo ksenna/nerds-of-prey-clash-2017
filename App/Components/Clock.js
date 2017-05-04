@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import ClockControl from './ClockControl';
 import Timer from './Timer';
+import moment from 'moment';
+
+const timer = require('react-native-timer');
 
 export default class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startTime: null,
-      timeElapsed: null,
+      startTime: '',
+      timeElapsed: moment().format('hh mm ss'),
       running: false
     }
 
@@ -20,7 +23,7 @@ export default class Clock extends Component {
     return(
       <View>
         <Timer timeElapsed={this.state.timeElapsed}/>
-
+        {/*<Text>{this.state.startTime}</Text>*/}
         <ClockControl
           running={this.state.running}
           startTimer={this.onTimerStarted}
@@ -29,25 +32,28 @@ export default class Clock extends Component {
     );
   }
 
+  componentWillUnmount() {
+    timer.clearInterval(this);
+  }
+
   onTimerStarted() {
-    debugger
     console.log('timer started')
     this.setState({
-      startTime: new Date()
+      timeElapsed: moment().format("hh mm ss")
     });
 
-    this.interval = setInterval(() => {
+    timer.setInterval('testName', () => {
+      console.log('tick');
       this.setState({
-        timeElapsed: new Date() - this.state.startTime,
+        timeElapsed: moment().format("hh mm ss"),
         running: true
       });
-    }, 3000000000000);
+    }, 1000);
   }
 
   onTimerStopped() {
-    debugger
     console.log('timer stopped')
-    clearInterval(this.interval);
+    timer.clearInterval('testName');
     this.setState({
       running: false
     });
