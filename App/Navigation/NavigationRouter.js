@@ -26,10 +26,10 @@ export default class NavigationRouter extends Component {
           <Scene key='tabbar' tabs={true} hideNavBar tabBarStyle={styles.tabBarStyle}>
             <Scene key="tab1" initial title="Tab #1" icon={TabIcon}>
               <Scene key="tab1_1" component={TabView} title="Stopwatch" onRight={()=>alert("Right button")} rightTitle="Right" />
-              <Scene key="tab1_2" component={TabView} title="Pomodoro Timer" titleStyle={{color:'black'}}/>
+              <Scene key="tab1_2" component={TabView} title="Tab #1_2" titleStyle={{color:'black'}}/>
             </Scene>
             <Scene key="tab2" title="Tab #2" icon={TabIcon}>
-              <Scene key="tab2_1" component={TabView} title="Tab #2_1" onLeft={()=>alert("Left button!")} leftTitle="Left"/>
+              <Scene key="tab2_1" component={TabView} title="Pomodoro Timer" onLeft={()=>alert("Left button!")} leftTitle="Left"/>
               <Scene key="tab2_2" component={TabView} title="Tab #2_2"/>
             </Scene>
           </Scene>

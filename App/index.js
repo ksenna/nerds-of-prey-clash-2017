@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
   View
 } from 'react-native';
-import Stopwatch from './Components/Stopwatch';
-import PomodoroTimer from './Components/PomodoroTimer';
+import NavigationRouter from './Navigation/NavigationRouter';
 
 export default class NerdsOfPrey extends Component {
   constructor(props) {
@@ -13,11 +11,7 @@ export default class NerdsOfPrey extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <PomodoroTimer/>
-      </View>
-    );
+    return (<NavigationRouter/>);
   }
 }
 
