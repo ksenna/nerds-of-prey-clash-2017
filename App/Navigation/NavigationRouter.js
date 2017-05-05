@@ -6,6 +6,7 @@ import {
 import { Router, Scene, TabBar } from 'react-native-router-flux';
 import styles from './Styles/NavigationRouterStyles';
 import TabView from './TabView';
+import DashboardScreen from '../Components/DashboardScreen';
 import RecordScreen from '../Components/RecordScreen';
 import ProfileScreen from '../Components/ProfileScreen';
 
@@ -30,7 +31,7 @@ export default class NavigationRouter extends Component {
           <Scene key='tabbar' tabs={true} hideNavBar>
             <Scene key="tab1" title="DASHBOARD" icon={TabIcon}>
               <Scene key="tab1_1"
-                component={TabView}
+                component={DashboardScreen}
                 title="Dashboard"
                 titleStyle={styles.navBarTitle}
               />
