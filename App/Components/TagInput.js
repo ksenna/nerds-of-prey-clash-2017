@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-// import { Colors, Fonts } from '../Themes/'
 import styles from './Styles/TagInputStyles';
 
 import Autocomplete from './Autocomplete'
