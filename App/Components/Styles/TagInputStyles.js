@@ -8,8 +8,6 @@ export default StyleSheet.create({
   
   // Styles the tag text input
   autocompleteContainer: {
-    // borderBottomColor: Colors.greyish,
-    // borderBottomWidth: 0.5
     ...Platform.select({
       ios: {
         borderBottomColor: Colors.greyish,
@@ -51,13 +49,11 @@ export default StyleSheet.create({
   },
 
   descriptionContainer: {
-    // paddingTop: 20
     ...Platform.select({
       ios: {
         paddingTop: 20
       },
       android: {
-        // paddingTop: 30,
         marginTop: 30
       }
     })
