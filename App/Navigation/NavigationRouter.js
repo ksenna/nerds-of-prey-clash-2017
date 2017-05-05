@@ -5,8 +5,6 @@ import {
 } from 'react-native';
 import { Router, Scene, TabBar } from 'react-native-router-flux';
 import styles from './Styles/NavigationRouterStyles';
-
-import PageOne from '../Components/PageOne';
 import TabView from './TabView';
 
 class TabIcon extends React.Component {
@@ -27,10 +25,6 @@ export default class NavigationRouter extends Component {
     return (
       <Router navigationBarStyle={styles.navBar}>
         <Scene key="root" hideNavBar={true}>
-          <Scene key="pageOne"
-            component={PageOne}
-            title="PageOne"
-          />
           <Scene key='tabbar' tabs={true} hideNavBar>
             <Scene key="tab1" initial title="STOPWATCH" icon={TabIcon}>
               <Scene key="tab1_1"
