@@ -1,13 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import {
   ListView,
-  Platform,
-  StyleSheet,
   Text,
   TextInput,
   View
 } from 'react-native';
-import { Colors, Fonts } from '../Themes/'
+import styles from './Styles/AutocompleteStyles';
 
 export default class Autocomplete extends Component {
   static propTypes = {
@@ -147,68 +145,3 @@ export default class Autocomplete extends Component {
     );
   }
 }
-
-// Border at the very end of the matching tag dropdown list
-const border = {
-  borderBottomColor: Colors.greyish,
-  borderBottomWidth: 0.5
-};
-
-const androidStyles = {
-  container: {
-    flex: 1
-  },
-
-  inputContainer: {
-    ...border,
-    marginBottom: 0
-  },
-
-  list: {
-    ...border,
-    backgroundColor: 'white',
-    borderTopWidth: 0,
-    margin: 10,
-    marginTop: 0
-  }
-};
-
-const iosStyles = {
-  container: {
-    zIndex: 1
-  },
-
-  inputContainer: {
-    ...border,
-  },
-
-  input: {
-    backgroundColor: 'white',
-    height: 25,
-    paddingLeft: 3,
-    fontSize: Fonts.size.small,
-    color: Colors.black
-  },
-
-  list: {
-    ...border,
-    backgroundColor: 'white',
-    borderTopWidth: 0,
-    left: 0,
-    position: 'absolute',
-    right: 0
-  }
-};
-
-const styles = StyleSheet.create({
-  input: {
-    backgroundColor: 'white',
-    height: 40,
-    paddingLeft: 3
-  },
-  
-  ...Platform.select({
-    android: { ...androidStyles },
-    ios: { ...iosStyles }
-  })
-});
