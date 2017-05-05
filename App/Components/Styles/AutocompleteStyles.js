@@ -37,6 +37,7 @@ export default StyleSheet.create({
     ...border,
   },
 
+  // List of suggested tags
   list: {
     ...border,
     backgroundColor: 'white',
