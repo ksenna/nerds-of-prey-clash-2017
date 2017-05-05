@@ -80,15 +80,6 @@ export default class TagInput extends Component {
             </TouchableOpacity>
           )}
         />
-        <View style={styles.descriptionContainer}>
-          {tags.length > 0 ? (
-            TagInput.renderTag(tags[0])
-          ) : (
-            <Text style={styles.infoText}>
-              Enter A Tag For Your Time
-            </Text>
-          )}
-        </View>
       </View>
     );
   }

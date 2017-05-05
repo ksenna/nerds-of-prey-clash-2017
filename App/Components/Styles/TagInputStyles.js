@@ -49,21 +49,6 @@ export default StyleSheet.create({
     })
   },
 
-  descriptionContainer: {
-    ...Platform.select({
-      ios: {
-        paddingTop: 20
-      },
-      android: {
-        marginTop: 30
-      }
-    })
-  },
-
-  infoText: {
-    textAlign: 'center'
-  },
-
   // Increasing marginBottom might push lower components down and help display more text suggestions
   titleText: {
     fontSize: 18,
