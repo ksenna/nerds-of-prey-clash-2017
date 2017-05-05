@@ -35,6 +35,7 @@ export default class Clock extends Component {
             onChangeText={(clientName) => this.setState({clientName})}
             placeholderTextColor={Colors.black}
             placeholder="CLIENT"
+            underlineColorAndroid='transparent'
             value={this.state.clientName}
           />
         </View>
