@@ -21,7 +21,7 @@ class TabIcon extends React.Component {
   render() {
     return (
       <View style={styles.tabBar}>
-        <Image source={this.props.imageIcon}/>
+        <Image source={this.props.selected ? this.props.imageIconActivated : this.props.imageIcon}/>
         <Text style={this.getSelectedTab()}>{this.props.title}</Text>
       </View>
     );
@@ -39,6 +39,7 @@ export default class NavigationRouter extends Component {
               title="DASHBOARD" 
               icon={TabIcon}
               imageIcon={Images.dashboardIcon}
+              imageIconActivated={Images.dashboardIconActive}
               component={DashboardScreen}
               title="Dashboard"
               titleStyle={styles.navBarTitle}/>
@@ -49,6 +50,7 @@ export default class NavigationRouter extends Component {
               title="RECORD" 
               icon={TabIcon}
               imageIcon={Images.recordIcon}
+              imageIconActivated={Images.recordIconActive}
               component={RecordScreen}
               title="Record"
               titleStyle={styles.navBarTitle}
@@ -60,7 +62,8 @@ export default class NavigationRouter extends Component {
               key="tabProfile"
               title="PROFILE" 
               icon={TabIcon}
-              imageIcon={Images.profileIcon}              
+              imageIcon={Images.profileIcon}
+              imageIconActivated={Images.profileIconActive}
               component={ProfileScreen}
               title="Profile"
               titleStyle={styles.navBarTitle}/>
