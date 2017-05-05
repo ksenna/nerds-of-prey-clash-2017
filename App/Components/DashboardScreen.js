@@ -10,7 +10,7 @@ export default class DashboardScreen extends Component {
     const dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
     this.state = {
       activityDataSource: dataSource.cloneWithRows([
-        'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'
+        'Client1', 'Client2', 'Client3', 'Client4', 'Client5', 'Client6', 'Client7', 'Client8'
       ])
     };
   }
