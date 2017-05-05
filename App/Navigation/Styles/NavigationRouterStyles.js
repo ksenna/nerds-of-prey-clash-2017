@@ -6,7 +6,7 @@ import { Colors, Fonts } from '../../Themes/'
 export default StyleSheet.create({
   navBar: {
     backgroundColor: Colors.white,
-    borderBottomColor: Colors.greyish
+    borderBottomColor: Colors.white
   },
 
   navBarTitle: {

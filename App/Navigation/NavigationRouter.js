@@ -5,7 +5,9 @@ import {
 } from 'react-native';
 import { Router, Scene, TabBar } from 'react-native-router-flux';
 import styles from './Styles/NavigationRouterStyles';
-import TabView from './TabView';
+import DashboardScreen from '../Components/DashboardScreen';
+import RecordScreen from '../Components/RecordScreen';
+import ProfileScreen from '../Components/ProfileScreen';
 
 class TabIcon extends React.Component {
   getSelectedTab() {
@@ -13,7 +15,7 @@ class TabIcon extends React.Component {
     return selectedTabStyle
   }
 
-  render(){
+  render() {
     return (
       <Text style={this.getSelectedTab()}>{this.props.title}</Text>
     );
@@ -26,27 +28,32 @@ export default class NavigationRouter extends Component {
       <Router navigationBarStyle={styles.navBar}>
         <Scene key="root" hideNavBar={true}>
           <Scene key='tabbar' tabs={true} hideNavBar>
-            <Scene key="tab1" initial title="STOPWATCH" icon={TabIcon}>
-              <Scene key="tab1_1"
-                component={TabView}
-                title="Stopwatch"
-                titleStyle={styles.navBarTitle}
-                navigationBarStyle={styles.navBar}
-                onRight={()=>alert("Right button")}
-                rightTitle="CLOSE"
-                rightButtonTextStyle={styles.topActionLabel}
-              />
-            </Scene>
-            <Scene key="tab2" title="TIMER" icon={TabIcon}>
-              <Scene key="tab2_1"
-                component={TabView}
-                title="Pomodoro Timer"
-                titleStyle={styles.navBarTitle}
-                onRight={()=>alert("Left button!")}
-                rightTitle="CLOSE"
-                rightButtonTextStyle={styles.topActionLabel}
-              />
-            </Scene>
+            <Scene 
+              key="tab1" 
+              title="DASHBOARD" icon={TabIcon}
+              component={DashboardScreen}
+              title="Dashboard"
+              titleStyle={styles.navBarTitle}/>
+
+            <Scene 
+              key="tab2" 
+              initial 
+              title="RECORD" 
+              icon={TabIcon}
+              component={RecordScreen}
+              title="Record"
+              titleStyle={styles.navBarTitle}
+              onRight={()=>alert("Left button!")}
+              rightTitle="CLOSE"
+              rightButtonTextStyle={styles.topActionLabel}/>
+            
+            <Scene 
+              key="tab3" 
+              title="PROFILE" 
+              icon={TabIcon}
+              component={ProfileScreen}
+              title="Profile"
+              titleStyle={styles.navBarTitle}/>
           </Scene>
         </Scene>
       </Router>
