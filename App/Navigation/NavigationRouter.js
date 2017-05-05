@@ -28,7 +28,7 @@ export default class NavigationRouter extends Component {
             title="PageOne"
           />
           <Scene key='tabbar' tabs={true} hideNavBar>
-            <Scene key="tab1" initial title="Tab #1" icon={TabIcon}>
+            <Scene key="tab1" initial title="STOPWATCH" icon={TabIcon}>
               <Scene key="tab1_1"
                 component={TabView}
                 title="Stopwatch"
@@ -43,7 +43,7 @@ export default class NavigationRouter extends Component {
                 titleStyle={styles.navBarTitle}
               />
             </Scene>
-            <Scene key="tab2" title="Tab #2" icon={TabIcon}>
+            <Scene key="tab2" title="TIMER" icon={TabIcon}>
               <Scene key="tab2_1"
                 component={TabView}
                 title="Pomodoro Timer"
