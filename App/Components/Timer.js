@@ -10,13 +10,28 @@ export default class Timer extends Component {
 
   render() {
     return(
-      <View>
-        <Text style={styles.clockText}>{this.getFormattedTime()}</Text>
+      <View style={styles.container}>
+        <View style={styles.timeContainer}>
+          <Text style={styles.clockText}>{this.getFormattedMinutes()}</Text>
+          <Text style={styles.label}>MINUTES</Text>
+        </View>
+        <View style={styles.timeContainer}>
+          <Text style={styles.clockSeparator}> : </Text>
+          <Text style={styles.label}></Text>
+        </View>
+        <View style={styles.timeContainer}>
+          <Text style={styles.clockText}>{this.getFormattedHSeconds()}</Text>
+          <Text style={styles.label}>SECONDS</Text>
+        </View>
       </View>
     );
   }
 
-  getFormattedTime() {
-    return moment(this.props.timeElapsed).utcOffset('+0000').format('HH mm ss');
+  getFormattedHSeconds() {
+    return moment(this.props.timeElapsed).utcOffset('+0000').format('ss');
+  }
+
+  getFormattedMinutes() {
+    return moment(this.props.timeElapsed).utcOffset('+0000').format('mm');
   }
 }
