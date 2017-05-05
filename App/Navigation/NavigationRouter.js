@@ -13,11 +13,6 @@ import ProfileScreen from '../Components/ProfileScreen';
 import Images from '../Themes/Images';
 
 class TabIcon extends React.Component {
-  getSelectedTab() {
-    var selectedTabStyle = this.props.selected ? styles.selectedTabItem : styles.unselectedTabItem
-    return selectedTabStyle
-  }
-
   render() {
     return (
       <View style={styles.tabBar}>
@@ -25,6 +20,11 @@ class TabIcon extends React.Component {
         <Text style={this.getSelectedTab()}>{this.props.title}</Text>
       </View>
     );
+  }
+
+  getSelectedTab() {
+    var selectedTabStyle = this.props.selected ? styles.selectedTabItem : styles.unselectedTabItem
+    return selectedTabStyle
   }
 }
 

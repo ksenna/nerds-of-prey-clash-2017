@@ -23,8 +23,11 @@ export default StyleSheet.create({
   },
 
   selectedTabItem: {
-    backgroundColor: Colors.black,
-    color: Colors.white
+    color: Colors.green
+  },
+
+  unselectedTabItem: {
+    color: Colors.black
   },
 
   topActionLabel: {
@@ -38,11 +41,6 @@ export default StyleSheet.create({
         fontFamily: Fonts.type.androidBase
       }
     }),
-  },
-
-  unselectedTabItem: {
-    backgroundColor: Colors.white,
-    color: Colors.black
   },
 
   tabBar: {
