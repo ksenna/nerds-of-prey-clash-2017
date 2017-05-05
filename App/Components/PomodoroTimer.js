@@ -7,7 +7,7 @@ export default class PomodoroTimer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startTime: moment(),
+      offset: 20,
       countdown: true
     }
   }
@@ -15,9 +15,7 @@ export default class PomodoroTimer extends Component {
   render() {
     return(
       <View>
-        <Clock 
-          startTime={this.state.startTime}
-          countdown={this.state.countdown}/>
+        <Clock offset={this.state.offset} countdown={this.state.countdown}/>
       </View>
     );
   }
