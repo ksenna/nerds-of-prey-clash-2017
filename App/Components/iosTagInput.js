@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
   View
 } from 'react-native';
+import { Colors, Fonts } from '../Themes/'
 
 import Autocomplete from './Autocomplete'
 
@@ -16,13 +18,14 @@ const defaultTags = [
   { title: "pairing" }
 ]
 
-export default class iosTagInput extends Component {
+export default class IosTagInput extends Component {
+  // renderTag displays the chosen tag below the text input field
   static renderTag(tag) {
     const { title } = tag;
 
     return (
       <View>
-        <Text style={styles.titleText}>{title}</Text>
+        <Text style={styles.titletext}>{title}</Text>
       </View>
     );
   }
@@ -67,8 +70,8 @@ export default class iosTagInput extends Component {
           defaultValue={query}
           onChangeText={text => this.setState({ query: text })}
           placeholder="Tag for your time"
-          renderItem={({ title, release_date }) => (
-            <TouchableOpacity onPress={() => this.setState({ query: title })}>
+          renderItem={({ title }) => (
+            <TouchableOpacity style={styles.matchingTagList} onPress={() => this.setState({ query: title })}>
               <Text style={styles.itemText}>
                 {title}
               </Text>
@@ -77,7 +80,7 @@ export default class iosTagInput extends Component {
         />
         <View style={styles.descriptionContainer}>
           {tags.length > 0 ? (
-            iosTagInput.renderTag(tags[0])
+            IosTagInput.renderTag(tags[0])
           ) : (
             <Text style={styles.infoText}>
               Enter A Tag For Your Time
@@ -91,20 +94,37 @@ export default class iosTagInput extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingTop: 25
   },
   
+  // Styles the tag text input
   autocompleteContainer: {
-    marginLeft: 10,
-    marginRight: 10
+    borderBottomColor: Colors.greyish,
+    borderBottomWidth: 0.5
   },
 
-  // Dropdown text suggestions
+  // Styles individual matching tags in the dropdown list
+  matchingTagList: {
+    borderBottomWidth: 0.5,
+    borderBottomColor: Colors.greyish,
+    paddingTop: 4,
+    paddingBottom: 4
+  },
+
+  // Styles the text in the dropdown tag suggestions
   itemText: {
-    fontSize: 15,
+    fontSize: 12,
     margin: 2,
-    marginLeft: 10
+    marginLeft: 10,
+    color: Colors.black,
+    ...Platform.select({
+      ios: {
+        fontFamily: Fonts.type.iosBase
+      },
+      android: {
+        fontFamily: Fonts.type.androidBase
+      }
+    })
   },
 
   descriptionContainer: {
@@ -115,10 +135,12 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 
+  // Increasing marginBottom might push lower components down and help display more text suggestions
   titleText: {
     fontSize: 18,
     marginBottom: 10,
     marginTop: 10,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: Colors.greyish
   }
 });
