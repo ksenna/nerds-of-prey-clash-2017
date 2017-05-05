@@ -11,9 +11,11 @@ export default class ActivityListItem extends Component {
   render() {
     return(
       <View style={styles.container}>
-        <Text>{this.getFormattedStartTime()}</Text>
-        <Text>{this.props.clientName}</Text>
-        <Text>{this.getFormattedTimeElapsed()}</Text>
+        <Text style={styles.startTime}>{this.getFormattedStartTime()}</Text>
+        <View style={styles.mainContainer}>
+          <Text style={styles.clientName}>{this.props.clientName}</Text>
+          <Text style={styles.timeElapsed}>{this.getFormattedTimeElapsed()}</Text>
+        </View>
       </View>
     );
   }
