@@ -44,6 +44,8 @@ export default class Clock extends Component {
           <Switch
             onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
             value={this.state.falseSwitchIsOn}
+            onTintColor="#000000"
+            thumbTintColor="#22c064"
           />
         </View>
         <ClockControl
