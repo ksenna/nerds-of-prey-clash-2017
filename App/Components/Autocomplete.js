@@ -64,7 +64,7 @@ export default class Autocomplete extends Component {
     defaultValue: '',
     renderItem: rowData => <Text>{rowData}</Text>,
     renderSeparator: null,
-    renderTextInput: props => <TextInput {...props} />
+    renderTextInput: props => <TextInput underlineColorAndroid='transparent' {...props} />
   };
 
   constructor(props) {
