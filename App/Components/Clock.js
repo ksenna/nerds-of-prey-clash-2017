@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, TextInput, View } from 'react-native';
+import { Platform, Switch, Text, TextInput, View } from 'react-native';
 import ClockControl from './ClockControl';
 import Timer from './Timer';
 import moment from 'moment';
@@ -37,6 +37,13 @@ export default class Clock extends Component {
             placeholder="CLIENT"
             underlineColorAndroid='transparent'
             value={this.state.clientName}
+          />
+        </View>
+        <View style={styles.billableContainer}>
+          <Text style={styles.billableLabel}>BILLABLE</Text>
+          <Switch
+            onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
+            value={this.state.falseSwitchIsOn}
           />
         </View>
         <ClockControl
