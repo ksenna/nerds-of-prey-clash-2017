@@ -24,7 +24,7 @@ export default class DashboardScreen extends Component {
   
   render() {
     return(
-      <View style={[styles.container, this.props.sceneStyle ]}>
+      <View >
         <Text>Recent Activity</Text>
         
         <ListView
