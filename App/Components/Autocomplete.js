@@ -7,6 +7,7 @@ import {
   TextInput,
   View
 } from 'react-native';
+import { Colors, Fonts } from '../Themes/'
 
 export default class Autocomplete extends Component {
   static propTypes = {
@@ -147,9 +148,10 @@ export default class Autocomplete extends Component {
   }
 }
 
+// Border at the very end of the matching tag dropdown list
 const border = {
-  borderBottomColor: '#b9b9b9',
-  borderBottomWidth: 1
+  borderBottomColor: Colors.greyish,
+  borderBottomWidth: 0.5
 };
 
 const androidStyles = {
@@ -177,13 +179,15 @@ const iosStyles = {
   },
 
   inputContainer: {
-    ...border
+    ...border,
   },
 
   input: {
     backgroundColor: 'white',
-    height: 40,
-    paddingLeft: 3
+    height: 25,
+    paddingLeft: 3,
+    fontSize: Fonts.size.small,
+    color: Colors.black
   },
 
   list: {
