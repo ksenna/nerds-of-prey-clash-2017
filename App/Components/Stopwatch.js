@@ -8,6 +8,7 @@ export default class Stopwatch extends Component {
     super(props);
     this.state = {
       startTime: moment(),
+      offset: 0,
       countdown: false
     }
   }
@@ -17,7 +18,8 @@ export default class Stopwatch extends Component {
       <View>
         <Clock 
           startTime={this.state.startTime}
-          countdown={this.state.countdown}/>
+          countdown={this.state.countdown}
+          offset={this.state.offset}/>
       </View>
     );
   }
