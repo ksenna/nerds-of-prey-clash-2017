@@ -6,6 +6,7 @@ import {
 import { Router, Scene, TabBar } from 'react-native-router-flux';
 import styles from './Styles/NavigationRouterStyles';
 import TabView from './TabView';
+import RecordScreen from '../Components/RecordScreen';
 
 class TabIcon extends React.Component {
   getSelectedTab() {
@@ -35,7 +36,7 @@ export default class NavigationRouter extends Component {
             </Scene>
             <Scene key="tab2" initial title="RECORD" icon={TabIcon}>
               <Scene key="tab2_1"
-                component={TabView}
+                component={RecordScreen}
                 title="Record"
                 titleStyle={styles.navBarTitle}
                 onRight={()=>alert("Left button!")}

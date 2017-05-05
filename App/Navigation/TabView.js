@@ -24,9 +24,6 @@ const TabView = (props, context) => {
       {props.name === 'tab1_1' &&
         <Stopwatch/>
       }
-      {props.name === 'tab2_1' &&
-        <RecordScreen/>
-      }
     </View>
   );
 };

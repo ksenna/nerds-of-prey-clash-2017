@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { View, Button } from 'react-native';
+import styles from '../Navigation/Styles/TabViewStyles';
 import Stopwatch from './Stopwatch';
 import PomodoroTimer from './PomodoroTimer';
 
@@ -15,7 +16,7 @@ export default class RecordScreen extends Component {
     let timepiece = this.state.stopwatch ? <Stopwatch/> : <PomodoroTimer/>;
 
     return(
-      <View>
+      <View style={[styles.container, this.props.sceneStyle ]}>
         <Button title="Stopwatch" onPress={() => this.setTimepiece(true)}/>
         <Button title="Timer" onPress={() => this.setTimepiece(false)}/>
         {timepiece}
