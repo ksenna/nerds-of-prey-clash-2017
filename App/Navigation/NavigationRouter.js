@@ -36,11 +36,6 @@ export default class NavigationRouter extends Component {
                 rightTitle="CLOSE"
                 rightButtonTextStyle={styles.topActionLabel}
               />
-              <Scene key="tab1_2"
-                component={TabView}
-                title="Tab #1_2"
-                titleStyle={styles.navBarTitle}
-              />
             </Scene>
             <Scene key="tab2" title="TIMER" icon={TabIcon}>
               <Scene key="tab2_1"
@@ -50,10 +45,6 @@ export default class NavigationRouter extends Component {
                 onRight={()=>alert("Left button!")}
                 rightTitle="CLOSE"
                 rightButtonTextStyle={styles.topActionLabel}
-              />
-              <Scene key="tab2_2" 
-                component={TabView}
-                title="Tab #2_2"
               />
             </Scene>
           </Scene>
