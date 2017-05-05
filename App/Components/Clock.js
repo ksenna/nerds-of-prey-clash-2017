@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import ClockControl from './ClockControl';
 import Timer from './Timer';
 import moment from 'moment';
+import TagInput from './TagInput'
 
 const timer = require('react-native-timer');
 
@@ -24,6 +25,7 @@ export default class Clock extends Component {
     return(
       <View>
         <Timer timeElapsed={this.state.timeElapsed}/>
+        <TagInput />
         <ClockControl
           running={this.state.running}
           toggleTimer={this.onTimerToggled}/>
