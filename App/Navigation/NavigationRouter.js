@@ -7,6 +7,7 @@ import { Router, Scene, TabBar } from 'react-native-router-flux';
 import styles from './Styles/NavigationRouterStyles';
 import TabView from './TabView';
 import RecordScreen from '../Components/RecordScreen';
+import ProfileScreen from '../Components/ProfileScreen';
 
 class TabIcon extends React.Component {
   getSelectedTab() {
@@ -14,7 +15,7 @@ class TabIcon extends React.Component {
     return selectedTabStyle
   }
 
-  render(){
+  render() {
     return (
       <Text style={this.getSelectedTab()}>{this.props.title}</Text>
     );
@@ -46,7 +47,7 @@ export default class NavigationRouter extends Component {
             </Scene>
             <Scene key="tab3" title="PROFILE" icon={TabIcon}>
               <Scene key="tab3_1"
-                component={TabView}
+                component={ProfileScreen}
                 title="Profile"
                 titleStyle={styles.navBarTitle}
               />
