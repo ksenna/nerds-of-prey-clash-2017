@@ -2,6 +2,7 @@ import React from 'react';
 import {PropTypes} from "react";
 import {Button, StyleSheet, Text, View} from "react-native";
 import { Actions } from 'react-native-router-flux';
+import styles from './Styles/TabViewStyles';
 import Stopwatch from '../Components/Stopwatch';
 import PomodoroTImer from '../Components/PomodoroTimer';
 
@@ -14,15 +15,6 @@ const propTypes = {
   sceneStyle: View.propTypes.style,
   title: PropTypes.string,
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-});
 
 const TabView = (props, context) => {
   const drawer = context.drawer;
