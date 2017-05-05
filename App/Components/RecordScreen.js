@@ -4,6 +4,21 @@ import styles from '../Navigation/Styles/TabViewStyles';
 import Stopwatch from './Stopwatch';
 import PomodoroTimer from './PomodoroTimer';
 
+class TimepieceToggle extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(
+      <View>
+        <Button title="Stopwatch" onPress={this.props.onStopwatchSelected}/>
+        <Button title="Timer" onPress={this.props.onPomodoroTimerSelected}/>
+      </View>
+    );
+  }
+}
+
 export default class RecordScreen extends Component {
   constructor(props) {
     super(props);
@@ -17,8 +32,11 @@ export default class RecordScreen extends Component {
 
     return(
       <View style={[styles.container, this.props.sceneStyle ]}>
-        <Button title="Stopwatch" onPress={() => this.setTimepiece(true)}/>
-        <Button title="Timer" onPress={() => this.setTimepiece(false)}/>
+        <TimepieceToggle 
+          stopwatch={this.state.stopwatch} 
+          onStopwatchSelected={() => this.setTimepiece(true)} 
+          onPomodoroTimerSelected={() => this.setTimepiece(false)}/>
+          
         {timepiece}
       </View>
     );
