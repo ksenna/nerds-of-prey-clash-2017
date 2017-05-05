@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import { Colors } from '../Themes/'
 import styles from './Styles/TagInputStyles';
 
 import Autocomplete from './Autocomplete'
@@ -69,7 +70,8 @@ export default class TagInput extends Component {
           data={tags.length === 1 && comp(query, tags[0].title) ? [] : tags}
           defaultValue={query}
           onChangeText={text => this.setState({ query: text })}
-          placeholder="Tag for your time"
+          placeholderTextColor={Colors.black}
+          placeholder="#ACTIVITY"
           renderItem={({ title }) => (
             <TouchableOpacity style={styles.matchingTagList} onPress={() => this.setState({ query: title })}>
               <Text style={styles.itemText}>
@@ -78,15 +80,6 @@ export default class TagInput extends Component {
             </TouchableOpacity>
           )}
         />
-        <View style={styles.descriptionContainer}>
-          {tags.length > 0 ? (
-            TagInput.renderTag(tags[0])
-          ) : (
-            <Text style={styles.infoText}>
-              Enter A Tag For Your Time
-            </Text>
-          )}
-        </View>
       </View>
     );
   }
