@@ -4,7 +4,8 @@ import {Button, StyleSheet, Text, View} from "react-native";
 import { Actions } from 'react-native-router-flux';
 import styles from './Styles/TabViewStyles';
 import Stopwatch from '../Components/Stopwatch';
-import PomodoroTImer from '../Components/PomodoroTimer';
+import PomodoroTimer from '../Components/PomodoroTimer';
+import RecordScreen from '../Components/RecordScreen';
 
 const contextTypes = {
   drawer: React.PropTypes.object,
@@ -24,7 +25,7 @@ const TabView = (props, context) => {
         <Stopwatch/>
       }
       {props.name === 'tab2_1' &&
-        <PomodoroTImer/>
+        <RecordScreen/>
       }
     </View>
   );
