@@ -17,7 +17,7 @@ export default class Clock extends Component {
       timeElapsed: this.roundToNextMinute(moment(moment().add(this.props.offset, 'minutes').diff(moment()))),
       running: false,
       clientName: '',
-      falseSwitchIsOn: false
+      billable: false
     }
 
     this.onTimerStarted = this.onTimerStarted.bind(this);
@@ -43,8 +43,8 @@ export default class Clock extends Component {
         <View style={styles.billableContainer}>
           <Text style={styles.billableLabel}>BILLABLE</Text>
           <Switch
-            onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
-            value={this.state.falseSwitchIsOn}
+            onValueChange={(value) => this.setState({billable: value})}
+            value={this.state.billable}
           />
         </View>
         <ClockControl
