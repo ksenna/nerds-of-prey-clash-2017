@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import { View, Button } from 'react-native';
-import styles from '../Navigation/Styles/TabViewStyles';
+import { View } from 'react-native';
+import Button from 'react-native-button';
+import tabViewStyles from '../Navigation/Styles/TabViewStyles';
+import timepieceToggleStyles from './Styles/TimepieceToggleStyles';
 import Stopwatch from './Stopwatch';
 import PomodoroTimer from './PomodoroTimer';
 import { Colors } from '../Themes/';
@@ -13,8 +15,17 @@ class TimepieceToggle extends Component {
   render() {
     return(
       <View>
-        <Button title="Stopwatch" onPress={this.props.onStopwatchSelected} color={Colors.black}/>
-        <Button title="Timer" onPress={this.props.onPomodoroTimerSelected} color={Colors.black}/>
+        <Button 
+          onPress={this.props.onStopwatchSelected} 
+          containerStyle={this.props.stopwatch ? timepieceToggleStyles.containerSelected : timepieceToggleStyles.containerUnselected}
+          style={this.props.stopwatch ? timepieceToggleStyles.buttonSelected : timepieceToggleStyles.buttonUnselected}
+          >STOPWATCH</Button>
+
+        <Button 
+          onPress={this.props.onPomodoroTimerSelected} 
+          containerStyle={this.props.stopwatch ? timepieceToggleStyles.containerUnselected : timepieceToggleStyles.containerSelected}
+          style={this.props.stopwatch ? timepieceToggleStyles.buttonUnselected : timepieceToggleStyles.buttonSelected}
+          >TIMER</Button>
       </View>
     );
   }
@@ -32,7 +43,7 @@ export default class RecordScreen extends Component {
     let timepiece = this.state.stopwatch ? <Stopwatch/> : <PomodoroTimer/>;
 
     return(
-      <View style={[styles.container, this.props.sceneStyle ]}>
+      <View style={[tabViewStyles.container, this.props.sceneStyle ]}>
         <TimepieceToggle 
           stopwatch={this.state.stopwatch} 
           onStopwatchSelected={() => this.setTimepiece(true)} 
