@@ -48,6 +48,9 @@ const style = {
   description: {
     fontSize: size.medium
   },
+  title: {
+    fontSize: size.regular
+  }
 }
 
 export default {
