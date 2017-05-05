@@ -9,7 +9,7 @@ export default class ActivityListItem extends Component {
   render() {
     return(
       <View>
-        <Text>{this.props.rowData}</Text>
+        <Text>{this.props.clientName}</Text>
       </View>
     );
   }
