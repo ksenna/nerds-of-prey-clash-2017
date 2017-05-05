@@ -3,7 +3,8 @@ import { Colors, Fonts } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
-    paddingTop: 25
+    paddingTop: 20,
+    paddingBottom: 20
   },
   
   // Styles the tag text input
@@ -46,21 +47,6 @@ export default StyleSheet.create({
         fontFamily: Fonts.type.androidBase
       }
     })
-  },
-
-  descriptionContainer: {
-    ...Platform.select({
-      ios: {
-        paddingTop: 20
-      },
-      android: {
-        marginTop: 30
-      }
-    })
-  },
-
-  infoText: {
-    textAlign: 'center'
   },
 
   // Increasing marginBottom might push lower components down and help display more text suggestions
