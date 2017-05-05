@@ -7,7 +7,6 @@ import { Router, Scene, TabBar } from 'react-native-router-flux';
 import styles from './Styles/NavigationRouterStyles';
 
 import PageOne from '../Components/PageOne';
-import PageTwo from '../Components/PageTwo';
 import TabView from './TabView';
 
 class TabIcon extends React.Component {
