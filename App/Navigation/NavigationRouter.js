@@ -26,21 +26,17 @@ export default class NavigationRouter extends Component {
       <Router navigationBarStyle={styles.navBar}>
         <Scene key="root" hideNavBar={true}>
           <Scene key='tabbar' tabs={true} hideNavBar>
-            <Scene key="tab1" title="STOPWATCH" icon={TabIcon}>
+            <Scene key="tab1" title="DASHBOARD" icon={TabIcon}>
               <Scene key="tab1_1"
                 component={TabView}
-                title="Stopwatch"
+                title="Dashboard"
                 titleStyle={styles.navBarTitle}
-                navigationBarStyle={styles.navBar}
-                onRight={()=>alert("Right button")}
-                rightTitle="CLOSE"
-                rightButtonTextStyle={styles.topActionLabel}
               />
             </Scene>
-            <Scene key="tab2" initial title="TIMER" icon={TabIcon}>
+            <Scene key="tab2" initial title="RECORD" icon={TabIcon}>
               <Scene key="tab2_1"
                 component={TabView}
-                title="Pomodoro Timer"
+                title="Record"
                 titleStyle={styles.navBarTitle}
                 onRight={()=>alert("Left button!")}
                 rightTitle="CLOSE"
