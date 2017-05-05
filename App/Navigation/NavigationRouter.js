@@ -20,7 +20,7 @@ class TabIcon extends React.Component {
 
   render() {
     return (
-      <View style={{justifyContent: 'center', alignItems: 'center', paddingBottom: 16}}>
+      <View style={styles.tabBar}>
         <Image source={this.props.imageIcon}/>
         <Text style={this.getSelectedTab()}>{this.props.title}</Text>
       </View>

@@ -43,5 +43,11 @@ export default StyleSheet.create({
   unselectedTabItem: {
     backgroundColor: Colors.white,
     color: Colors.black
+  },
+
+  tabBar: {
+    paddingBottom: 11,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
