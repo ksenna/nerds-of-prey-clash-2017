@@ -1,3 +1,10 @@
+const type = {
+  iosAccent: 'AvenirNext-UltraLight',
+  iosBase: 'Avenir',
+  androidAccent: 'sans-serif-thin',
+  androidBase: 'sans-serif'
+}
+
 const size = {
   h1: 38,
   h2: 34,
@@ -7,6 +14,7 @@ const size = {
   h6: 19,
   input: 18,
   regular: 17,
+  large: 64,
   medium: 14,
   small: 12,
   tiny: 8.5
@@ -34,13 +42,17 @@ const style = {
   normal: {
     fontSize: size.regular
   },
+  clockDisplay: {
+    fontSize: size.large
+  },
   description: {
     fontSize: size.medium
-  }
+  },
 }
 
 export default {
   size,
-  style
+  style,
+  type
 }
 
