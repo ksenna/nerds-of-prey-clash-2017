@@ -10,9 +10,8 @@ export default class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startTime: props.startTime,
-      offset: props.offset,
-      timeElapsed: this.roundToNextMinute(moment(props.startTime.diff(moment()))),
+      startTime: moment().add(props.offset, 'minutes'),
+      timeElapsed: this.roundToNextMinute(moment(moment().add(this.props.offset, 'minutes').diff(moment()))),
       running: false
     }
 
@@ -54,7 +53,7 @@ export default class Clock extends Component {
     let initial;
 
     this.setState({
-      startTime: moment().add(this.state.offset, 'minutes')
+      startTime: moment().add(this.props.offset, 'minutes')
     });
 
     timer.setInterval('testName', () => {
@@ -78,8 +77,8 @@ export default class Clock extends Component {
     console.log('timer stopped')
     timer.clearInterval('testName');
     this.setState({
-      startTime: moment(),
-      timeElapsed: moment(moment().diff(moment())),
+      startTime: moment().add(this.props.offset, 'minutes'),
+      timeElapsed: moment(moment().add(this.props.offset, 'minutes').diff(moment())),
       running: false
     });
   }
