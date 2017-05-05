@@ -26,7 +26,7 @@ export default class NavigationRouter extends Component {
       <Router navigationBarStyle={styles.navBar}>
         <Scene key="root" hideNavBar={true}>
           <Scene key='tabbar' tabs={true} hideNavBar>
-            <Scene key="tab1" initial title="STOPWATCH" icon={TabIcon}>
+            <Scene key="tab1" title="STOPWATCH" icon={TabIcon}>
               <Scene key="tab1_1"
                 component={TabView}
                 title="Stopwatch"
@@ -37,7 +37,7 @@ export default class NavigationRouter extends Component {
                 rightButtonTextStyle={styles.topActionLabel}
               />
             </Scene>
-            <Scene key="tab2" title="TIMER" icon={TabIcon}>
+            <Scene key="tab2" initial title="TIMER" icon={TabIcon}>
               <Scene key="tab2_1"
                 component={TabView}
                 title="Pomodoro Timer"
@@ -45,6 +45,13 @@ export default class NavigationRouter extends Component {
                 onRight={()=>alert("Left button!")}
                 rightTitle="CLOSE"
                 rightButtonTextStyle={styles.topActionLabel}
+              />
+            </Scene>
+            <Scene key="tab3" title="PROFILE" icon={TabIcon}>
+              <Scene key="tab3_1"
+                component={TabView}
+                title="Profile"
+                titleStyle={styles.navBarTitle}
               />
             </Scene>
           </Scene>
