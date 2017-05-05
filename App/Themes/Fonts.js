@@ -1,8 +1,10 @@
 const type = {
   iosAccent: 'AvenirNext-UltraLight',
   iosBase: 'Avenir',
+  iosMedium: 'Avenir-Medium',
   androidAccent: 'sans-serif-thin',
-  androidBase: 'sans-serif'
+  androidBase: 'sans-serif',
+  androidMedium: 'sans-serif-medium'
 }
 
 const size = {
