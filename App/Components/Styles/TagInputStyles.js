@@ -3,7 +3,8 @@ import { Colors, Fonts } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
-    paddingTop: 25
+    paddingTop: 20,
+    paddingBottom: 20
   },
   
   // Styles the tag text input

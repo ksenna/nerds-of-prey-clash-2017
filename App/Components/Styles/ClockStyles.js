@@ -22,7 +22,7 @@ export default StyleSheet.create({
   },
 
   billableContainer: {
-    paddingTop: 10,
+    paddingTop: 15,
     paddingBottom: 10,
     borderBottomColor: Colors.greyish,
     borderBottomWidth: 0.5,
