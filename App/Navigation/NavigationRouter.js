@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text
+  Text,
+  View,
+  Image
 } from 'react-native';
 import { Router, Scene, TabBar } from 'react-native-router-flux';
 import styles from './Styles/NavigationRouterStyles';
 import DashboardScreen from '../Components/DashboardScreen';
 import RecordScreen from '../Components/RecordScreen';
 import ProfileScreen from '../Components/ProfileScreen';
+import Images from '../Themes/Images';
 
 class TabIcon extends React.Component {
   getSelectedTab() {
@@ -17,7 +20,10 @@ class TabIcon extends React.Component {
 
   render() {
     return (
-      <Text style={this.getSelectedTab()}>{this.props.title}</Text>
+      <View style={{justifyContent: 'center', alignItems: 'center', paddingBottom: 16}}>
+        <Image source={this.props.imageIcon}/>
+        <Text style={this.getSelectedTab()}>{this.props.title}</Text>
+      </View>
     );
   }
 }
@@ -29,17 +35,20 @@ export default class NavigationRouter extends Component {
         <Scene key="root" hideNavBar={true}>
           <Scene key='tabbar' tabs={true} hideNavBar>
             <Scene 
-              key="tab1" 
-              title="DASHBOARD" icon={TabIcon}
+              key="tabDashboard" 
+              title="DASHBOARD" 
+              icon={TabIcon}
+              imageIcon={Images.dashboardIcon}
               component={DashboardScreen}
               title="Dashboard"
               titleStyle={styles.navBarTitle}/>
 
             <Scene 
-              key="tab2" 
+              key="tabRecord" 
               initial 
               title="RECORD" 
               icon={TabIcon}
+              imageIcon={Images.recordIcon}
               component={RecordScreen}
               title="Record"
               titleStyle={styles.navBarTitle}
@@ -48,9 +57,10 @@ export default class NavigationRouter extends Component {
               rightButtonTextStyle={styles.topActionLabel}/>
             
             <Scene 
-              key="tab3" 
+              key="tabProfile"
               title="PROFILE" 
               icon={TabIcon}
+              imageIcon={Images.profileIcon}              
               component={ProfileScreen}
               title="Profile"
               titleStyle={styles.navBarTitle}/>
