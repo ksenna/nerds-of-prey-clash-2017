@@ -16,7 +16,8 @@ export default class Clock extends Component {
       startTime: moment().add(props.offset, 'minutes'),
       timeElapsed: this.roundToNextMinute(moment(moment().add(this.props.offset, 'minutes').diff(moment()))),
       running: false,
-      clientName: ''
+      clientName: '',
+      falseSwitchIsOn: false
     }
 
     this.onTimerStarted = this.onTimerStarted.bind(this);
@@ -44,8 +45,6 @@ export default class Clock extends Component {
           <Switch
             onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
             value={this.state.falseSwitchIsOn}
-            onTintColor="#000000"
-            thumbTintColor="#22c064"
           />
         </View>
         <ClockControl
