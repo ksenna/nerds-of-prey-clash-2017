@@ -31,13 +31,13 @@ const TabView = (props, context) => {
       <Text>Tab {props.title}</Text>
       {props.name === 'tab1_1' &&
         <View>
-          <Button onPress={Actions.tab1_2} title="next screen for pomodoro" />
+          <Button onPress={Actions.tab2_1} title="next screen for pomodoro" />
           <Stopwatch/>
         </View>
       }
       {props.name === 'tab2_1' &&
         <View>
-          <Button onPress={Actions.tab2_2} title="next screen for tab2_1" />
+          <Button onPress={Actions.tab2_2} title="next screen for tab2_2" />
           <PomodoroTImer/>
         </View>
       }
