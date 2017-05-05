@@ -4,15 +4,21 @@ import {
   Text
 } from 'react-native';
 import { Router, Scene, TabBar } from 'react-native-router-flux';
+import styles from './Styles/NavigationRouterStyles';
 
 import PageOne from '../Components/PageOne';
 import PageTwo from '../Components/PageTwo';
 import TabView from './TabView';
 
 class TabIcon extends React.Component {
+  getSelectedTab() {
+    var selectedTabStyle = this.props.selected ? styles.selectedTabItem : styles.unselectedTabItem
+    return selectedTabStyle
+  }
+
   render(){
     return (
-      <Text style={{color: this.props.selected ? 'blue' :'black'}}>{this.props.title}</Text>
+      <Text style={this.getSelectedTab()}>{this.props.title}</Text>
     );
   }
 }
@@ -20,17 +26,42 @@ class TabIcon extends React.Component {
 export default class NavigationRouter extends Component {
   render() {
     return (
-      <Router>
+      <Router navigationBarStyle={styles.navBar}>
         <Scene key="root" hideNavBar={true}>
-          <Scene key="pageOne" component={PageOne} title="PageOne"/>
-          <Scene key='tabbar' tabs={true} hideNavBar tabBarStyle={styles.tabBarStyle}>
-            <Scene key="tab1" initial title="Tab #1" icon={TabIcon}>
-              <Scene key="tab1_1" component={TabView} title="Stopwatch" onRight={()=>alert("Right button")} rightTitle="Right" />
-              <Scene key="tab1_2" component={TabView} title="Tab #1_2" titleStyle={{color:'black'}}/>
+          <Scene key="pageOne"
+            component={PageOne}
+            title="PageOne"
+          />
+          <Scene key='tabbar' tabs={true} hideNavBar>
+            <Scene key="tab1" initial title="STOPWATCH" icon={TabIcon}>
+              <Scene key="tab1_1"
+                component={TabView}
+                title="Stopwatch"
+                titleStyle={styles.navBarTitle}
+                navigationBarStyle={styles.navBar}
+                onRight={()=>alert("Right button")}
+                rightTitle="CLOSE"
+                rightButtonTextStyle={styles.topActionLabel}
+              />
+              <Scene key="tab1_2"
+                component={TabView}
+                title="Tab #1_2"
+                titleStyle={styles.navBarTitle}
+              />
             </Scene>
-            <Scene key="tab2" title="Tab #2" icon={TabIcon}>
-              <Scene key="tab2_1" component={TabView} title="Pomodoro Timer" onLeft={()=>alert("Left button!")} leftTitle="Left"/>
-              <Scene key="tab2_2" component={TabView} title="Tab #2_2"/>
+            <Scene key="tab2" title="TIMER" icon={TabIcon}>
+              <Scene key="tab2_1"
+                component={TabView}
+                title="Pomodoro Timer"
+                titleStyle={styles.navBarTitle}
+                onRight={()=>alert("Left button!")}
+                rightTitle="CLOSE"
+                rightButtonTextStyle={styles.topActionLabel}
+              />
+              <Scene key="tab2_2" 
+                component={TabView}
+                title="Tab #2_2"
+              />
             </Scene>
           </Scene>
         </Scene>
@@ -38,12 +69,3 @@ export default class NavigationRouter extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  tabBarStyle: {
-    borderTopWidth : .5,
-    borderColor    : '#b7b7b7',
-    backgroundColor: 'white',
-    opacity        : 1
-  }
-})
