@@ -26,6 +26,19 @@ export default StyleSheet.create({
     color: Colors.white
   },
 
+  topActionLabel: {
+    color: Colors.black,
+    fontSize: Fonts.size.medium,
+    ...Platform.select({
+      ios: {
+        fontFamily: Fonts.type.iosBase
+      },
+      android: {
+        fontFamily: Fonts.type.androidBase
+      }
+    }),
+  },
+
   unselectedTabItem: {
     backgroundColor: Colors.white,
     color: Colors.black

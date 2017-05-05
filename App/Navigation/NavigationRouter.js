@@ -40,7 +40,8 @@ export default class NavigationRouter extends Component {
                 titleStyle={styles.navBarTitle}
                 navigationBarStyle={styles.navBar}
                 onRight={()=>alert("Right button")}
-                rightTitle="Right"
+                rightTitle="CLOSE"
+                rightButtonTextStyle={styles.topActionLabel}
               />
               <Scene key="tab1_2"
                 component={TabView}
@@ -53,8 +54,9 @@ export default class NavigationRouter extends Component {
                 component={TabView}
                 title="Pomodoro Timer"
                 titleStyle={styles.navBarTitle}
-                onLeft={()=>alert("Left button!")}
-                leftTitle="Left"
+                onRight={()=>alert("Left button!")}
+                rightTitle="CLOSE"
+                rightButtonTextStyle={styles.topActionLabel}
               />
               <Scene key="tab2_2" 
                 component={TabView}
