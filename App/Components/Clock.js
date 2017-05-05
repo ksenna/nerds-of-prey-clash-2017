@@ -56,7 +56,7 @@ export default class Clock extends Component {
       startTime: moment().add(this.props.offset, 'minutes')
     });
 
-    timer.setInterval('testName', () => {
+    timer.setInterval('tick', () => {
       console.log('tick');
 
       let elapsed;
@@ -75,7 +75,7 @@ export default class Clock extends Component {
 
   onTimerStopped() {
     console.log('timer stopped')
-    timer.clearInterval('testName');
+    timer.clearInterval('tick');
     this.setState({
       startTime: moment().add(this.props.offset, 'minutes'),
       timeElapsed: moment(moment().add(this.props.offset, 'minutes').diff(moment())),
