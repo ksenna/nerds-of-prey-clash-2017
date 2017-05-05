@@ -19,5 +19,15 @@ export default StyleSheet.create({
         fontFamily: Fonts.type.androidBase
       }
     }),
+  },
+
+  selectedTabItem: {
+    backgroundColor: Colors.black,
+    color: Colors.white
+  },
+
+  unselectedTabItem: {
+    backgroundColor: Colors.white,
+    color: Colors.black
   }
 })

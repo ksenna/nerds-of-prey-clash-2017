@@ -11,9 +11,14 @@ import PageTwo from '../Components/PageTwo';
 import TabView from './TabView';
 
 class TabIcon extends React.Component {
+  getSelectedTab() {
+    var selectedTabStyle = this.props.selected ? styles.selectedTabItem : styles.unselectedTabItem
+    return selectedTabStyle
+  }
+
   render(){
     return (
-      <Text style={{color: this.props.selected ? 'blue' :'black'}}>{this.props.title}</Text>
+      <Text style={this.getSelectedTab()}>{this.props.title}</Text>
     );
   }
 }
