@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
   View
 } from 'react-native';
-import Clock from './Components/Clock';
+import NavigationRouter from './Navigation/NavigationRouter';
 
 export default class NerdsOfPrey extends Component {
   constructor(props) {
@@ -12,11 +11,7 @@ export default class NerdsOfPrey extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <Clock/>
-      </View>
-    );
+    return (<NavigationRouter/>);
   }
 }
 

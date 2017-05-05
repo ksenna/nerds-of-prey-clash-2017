@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import ClockControl from './ClockControl';
 import Timer from './Timer';
 import moment from 'moment';
@@ -53,8 +53,16 @@ export default class Clock extends Component {
     timer.setInterval('testName', () => {
       console.log('tick');
 
+      let elapsed;
+
+      if (this.props.countdown) {
+        elapsed = moment(this.state.startTime.diff(moment()));
+      } else {
+        elapsed = moment(moment().diff(this.state.startTime));
+      }
+
       this.setState({
-        timeElapsed: moment(moment().diff(this.state.startTime)),
+        timeElapsed: elapsed,
         running: true
       });
     }, 1000);
