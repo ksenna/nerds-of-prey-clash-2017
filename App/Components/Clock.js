@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Platform, View } from 'react-native';
+import { Platform, TextInput, View } from 'react-native';
 import ClockControl from './ClockControl';
 import Timer from './Timer';
 import moment from 'moment';
 import TagInput from './TagInput'
+import styles from './Styles/ClockStyles'
+import { Colors } from '../Themes/'
 
 const timer = require('react-native-timer');
 
@@ -13,7 +15,8 @@ export default class Clock extends Component {
     this.state = {
       startTime: moment().add(props.offset, 'minutes'),
       timeElapsed: this.roundToNextMinute(moment(moment().add(this.props.offset, 'minutes').diff(moment()))),
-      running: false
+      running: false,
+      clientName: ''
     }
 
     this.onTimerStarted = this.onTimerStarted.bind(this);
@@ -26,6 +29,15 @@ export default class Clock extends Component {
       <View>
         <Timer timeElapsed={this.state.timeElapsed}/>
         <TagInput />
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            onChangeText={(clientName) => this.setState({clientName})}
+            placeholderTextColor={Colors.black}
+            placeholder="CLIENT"
+            value={this.state.clientName}
+          />
+        </View>
         <ClockControl
           running={this.state.running}
           toggleTimer={this.onTimerToggled}/>
