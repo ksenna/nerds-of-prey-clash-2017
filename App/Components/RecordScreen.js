@@ -3,6 +3,7 @@ import { View, Button } from 'react-native';
 import styles from '../Navigation/Styles/TabViewStyles';
 import Stopwatch from './Stopwatch';
 import PomodoroTimer from './PomodoroTimer';
+import { Colors } from '../Themes/';
 
 class TimepieceToggle extends Component {
   constructor(props) {
@@ -12,8 +13,8 @@ class TimepieceToggle extends Component {
   render() {
     return(
       <View>
-        <Button title="Stopwatch" onPress={this.props.onStopwatchSelected}/>
-        <Button title="Timer" onPress={this.props.onPomodoroTimerSelected}/>
+        <Button title="Stopwatch" onPress={this.props.onStopwatchSelected} color={Colors.black}/>
+        <Button title="Timer" onPress={this.props.onPomodoroTimerSelected} color={Colors.black}/>
       </View>
     );
   }
