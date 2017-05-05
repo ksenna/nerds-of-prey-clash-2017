@@ -48,7 +48,7 @@ const style = {
   description: {
     fontSize: size.medium
   },
-  title: {
+  navigationTitle: {
     fontSize: size.regular
   }
 }
