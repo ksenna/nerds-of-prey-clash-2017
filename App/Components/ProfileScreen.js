@@ -4,7 +4,7 @@ import styles from '../Navigation/Styles/TabViewStyles';
 
 export default class ProfileScreen extends Component {
   constructor(props) {
-    super();
+    super(props);
   }
   
   render() {

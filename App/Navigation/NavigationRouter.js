@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import { Router, Scene, TabBar } from 'react-native-router-flux';
 import styles from './Styles/NavigationRouterStyles';
-import TabView from './TabView';
 import DashboardScreen from '../Components/DashboardScreen';
 import RecordScreen from '../Components/RecordScreen';
 import ProfileScreen from '../Components/ProfileScreen';
