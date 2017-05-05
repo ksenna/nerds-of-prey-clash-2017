@@ -14,7 +14,7 @@ class TimepieceToggle extends Component {
 
   render() {
     return(
-      <View>
+      <View style={timepieceToggleStyles.container}>
         <Button 
           onPress={this.props.onStopwatchSelected} 
           containerStyle={this.props.stopwatch ? timepieceToggleStyles.containerSelected : timepieceToggleStyles.containerUnselected}
