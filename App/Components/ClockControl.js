@@ -16,7 +16,7 @@ export default class ClockControl extends Component {
   render() {
     return(
       <View style={styles.container}>
-        <TouchableOpacity style={styles.button} onPress={this.props.toggleTimer}>
+        <TouchableOpacity onPress={this.props.toggleTimer}>
           <Image source={this.getImage()} />
         </TouchableOpacity>
       </View>
