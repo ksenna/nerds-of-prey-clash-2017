@@ -13,8 +13,8 @@ export default class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startTime: moment().add(props.offset, 'minutes'),
-      timeElapsed: this.roundToNextMinute(moment(moment().add(this.props.offset, 'minutes').diff(moment()))),
+      startTime: moment().add(props.offset, 'seconds'),
+      timeElapsed: moment(moment().add(this.props.offset, 'seconds').diff(moment())),
       running: false,
       clientName: '',
       falseSwitchIsOn: false
@@ -28,7 +28,7 @@ export default class Clock extends Component {
   render() {
     return(
       <View>
-        <Timer timeElapsed={this.state.timeElapsed}/>
+        <Timer timeElapsed={this.state.timeElapsed} countdown={this.props.countdown} running={this.state.running}/>
         <TagInput />
         <View style={styles.inputContainer}>
           <TextInput
@@ -76,7 +76,7 @@ export default class Clock extends Component {
     let initial;
 
     this.setState({
-      startTime: moment().add(this.props.offset, 'minutes')
+      startTime: moment().add(this.props.offset, 'seconds')
     });
 
     timer.setInterval('tick', () => {
@@ -100,8 +100,8 @@ export default class Clock extends Component {
     console.log('timer stopped')
     timer.clearInterval('tick');
     this.setState({
-      startTime: moment().add(this.props.offset, 'minutes'),
-      timeElapsed: moment(moment().add(this.props.offset, 'minutes').diff(moment())),
+      startTime: moment().add(this.props.offset, 'seconds'),
+      timeElapsed: moment(moment().add(this.props.offset, 'seconds').diff(moment())),
       running: false
     });
   }
