@@ -23,7 +23,17 @@ class ProfileScreen extends Component {
                         style={tagComponentStyles.tag}
                         >#{tag.name}</Button>
                     ))
+                  ;
 
+    const myClients = this.props.data.loading 
+                  ? (<Text>Loading...</Text>)
+                  : this.props.data.clients.map((client) => (
+                      <Button
+                        containerStyle={tagComponentStyles.container}
+                        style={tagComponentStyles.tag}
+                        >{client.name}</Button>
+                    ))
+                  ;
 
     return(
       <View style={profileScreenStyles.container}>
@@ -33,53 +43,12 @@ class ProfileScreen extends Component {
         </View>
         <Text style={profileScreenStyles.header}>TAGS</Text>
         <View style={profileScreenStyles.tags}>
-        
-        {myTags}
-
-
+          {myTags}
         </View>
         <Text style={profileScreenStyles.header}>CLIENTS</Text>
         <View style={profileScreenStyles.tags}>
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >humrun</Button>
-
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >rollins</Button>
-          
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >apple gsx</Button>
-
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >bmw</Button>
-
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >turner</Button>
-
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >ge</Button>
-
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >home depot</Button>
-
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >collosseum</Button>
-          </View>
+          {myClients}
+        </View>
       </View>
     );
   }
