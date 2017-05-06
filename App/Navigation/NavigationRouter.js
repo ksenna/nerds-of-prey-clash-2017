@@ -55,11 +55,7 @@ export default class NavigationRouter extends Component {
               imageIconActivated={Images.recordIconActive}
               component={RecordScreen}
               title="Record"
-              titleStyle={styles.navBarTitle}
-              onRight={()=>alert("Left button!")}
-              rightTitle="CLOSE"
-              rightButtonTextStyle={styles.topActionLabel}/>
-            
+              titleStyle={styles.navBarTitle}/>
             <Scene 
               key="tabProfile"
               title="PROFILE" 
