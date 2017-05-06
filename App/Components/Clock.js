@@ -115,13 +115,25 @@ export default class Clock extends Component {
   onTimerStopped() {
     console.log('timer stopped')
     timer.clearInterval('tick');
+
     this.setState({
       startTime: moment().add(this.props.offset, 'seconds'),
       timeElapsed: moment(moment().add(this.props.offset, 'seconds').diff(moment())),
       running: false
     });
-    AsyncStorage.setItem("timeData", JSON.stringify(this.state))
+
+    var latestTimeData = {
+      startTime: this.state.startTime,
+      timeElapsed: this.state.timeElapsed,
+      clientName: this.state.clientName,
+      billable: this.state.billable
+    }
+
+    var newTimeData = this.state.allTimeData.push(latestTimeData)
+    AsyncStorage.setItem("timeData", JSON.stringify(newTimeData))
 
     Actions.saveConfirmationScreen(this.state)
+
+    this.state.clientName = ''
   }
 }
