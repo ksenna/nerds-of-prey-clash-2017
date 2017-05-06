@@ -41,5 +41,13 @@ export default StyleSheet.create({
   timeContainer: {
     flexDirection: 'column',
     alignItems: 'center'
+  },
+
+  arrowUp: {
+    marginTop: 16
+  },
+
+  arrowDown: {
+    marginBottom: 16
   }
 })
