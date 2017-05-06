@@ -21,6 +21,7 @@ export default StyleSheet.create({
   },
 
   startTime: {
+    alignSelf: 'center',
     fontSize: Fonts.size.tiny,
     ...Platform.select({
       ios: {
