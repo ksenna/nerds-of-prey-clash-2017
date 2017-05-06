@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text, ListView } from 'react-native';
+import { View, Text, ListView, AsyncStorage } from 'react-native';
 import tabViewStyles from '../Navigation/Styles/TabViewStyles';
 import dashboardScreenStyles from './Styles/DashboardScreenStyles';
 import ActivityGraph from './ActivityGraph';
@@ -25,13 +25,26 @@ export default class DashboardScreen extends Component {
   render() {
     return(
       <View>
-        <ActivityGraph/>
+        <ActivityGraph/> 
         <Text style={dashboardScreenStyles.recentActivityHeader}>RECENT ACTIVITY</Text>
         <ListView
           dataSource={this.state.activityDataSource}
           renderRow={this.populateActivityListItem}/>
       </View>
     );
+  }
+
+  componentWillMount() {
+    AsyncStorage.getItem("timeData").then((json) => {
+      try {
+        const timeData = JSON.parse(json);
+        this.setState({
+          allTimeData: [timeData]
+        })
+      } catch(e) {
+        console.log("Error fetching data from AsyncStorage")
+      }
+    })
   }
 
   populateActivityListItem(rowData) {
