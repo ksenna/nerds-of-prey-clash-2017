@@ -12,12 +12,16 @@ export default class SaveConfirmationScreen extends Component {
     super(props);
   }
 
-  getFormattedHSeconds() {
-    return moment(this.props.timeElapsed).utcOffset('+0000').format('ss');
+  getFormattedSeconds() {
+    let offsetSeconds = this.props.finalOffset % 60
+    let elapsedSeconds = moment(this.props.timeElapsed).seconds();
+    return moment((60 + offsetSeconds) % elapsedSeconds, 'seconds').format('ss');
   }
 
   getFormattedMinutes() {
-    return moment(this.props.timeElapsed).utcOffset('+0000').format('mm');
+    let offsetMinutes = this.props.finalOffset / 60;
+    let elapsedMinutes = moment(this.props.timeElapsed).minutes() + 1;
+    return moment(offsetMinutes - elapsedMinutes, 'minutes').format('mm');
   }
 
   render() {
@@ -36,7 +40,7 @@ export default class SaveConfirmationScreen extends Component {
               <Text style={styles.label}></Text>
             </View>
             <View style={styles.timeContainer}>
-              <Text style={styles.clockText}>{this.getFormattedHSeconds()}</Text>
+              <Text style={styles.clockText}>{this.getFormattedSeconds()}</Text>
               <Text style={styles.label}>SECONDS</Text>
             </View>
           </View>
