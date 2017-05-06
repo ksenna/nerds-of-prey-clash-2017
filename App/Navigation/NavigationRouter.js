@@ -34,10 +34,10 @@ export default class NavigationRouter extends Component {
     return (
       <Router navigationBarStyle={styles.navBar}>
         <Scene key="root" hideNavBar={true}>
-          <Scene key='tabbar' tabs={true} hideNavBar>
+          <Scene key='tabbar' tabs={true} hideNavBar tabBarStyle={styles.tabBarBackground}>
             <Scene 
               key="tabDashboard" 
-              title="DASHBOARD" 
+              title="DASHBOARD"
               icon={TabIcon}
               imageIcon={Images.dashboardIcon}
               imageIconActivated={Images.dashboardIconActive}
