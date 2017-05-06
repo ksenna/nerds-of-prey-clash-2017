@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text
+  Text,
+  View,
+  Image
 } from 'react-native';
 import { Router, Scene, TabBar } from 'react-native-router-flux';
 import styles from './Styles/NavigationRouterStyles';
 import DashboardScreen from '../Components/DashboardScreen';
 import RecordScreen from '../Components/RecordScreen';
 import ProfileScreen from '../Components/ProfileScreen';
+import Images from '../Themes/Images';
 
 class TabIcon extends React.Component {
+  render() {
+    return (
+      <View style={styles.tabBar}>
+        <Image source={this.props.selected ? this.props.imageIconActivated : this.props.imageIcon}/>
+        <Text style={this.getSelectedTab()}>{this.props.title}</Text>
+      </View>
+    );
+  }
+
   getSelectedTab() {
     var selectedTabStyle = this.props.selected ? styles.selectedTabItem : styles.unselectedTabItem
     return selectedTabStyle
-  }
-
-  render() {
-    return (
-      <Text style={this.getSelectedTab()}>{this.props.title}</Text>
-    );
   }
 }
 
@@ -29,17 +35,22 @@ export default class NavigationRouter extends Component {
         <Scene key="root" hideNavBar={true}>
           <Scene key='tabbar' tabs={true} hideNavBar>
             <Scene 
-              key="tab1" 
-              title="DASHBOARD" icon={TabIcon}
+              key="tabDashboard" 
+              title="DASHBOARD" 
+              icon={TabIcon}
+              imageIcon={Images.dashboardIcon}
+              imageIconActivated={Images.dashboardIconActive}
               component={DashboardScreen}
               title="Dashboard"
               titleStyle={styles.navBarTitle}/>
 
             <Scene 
-              key="tab2" 
+              key="tabRecord" 
               initial 
               title="RECORD" 
               icon={TabIcon}
+              imageIcon={Images.recordIcon}
+              imageIconActivated={Images.recordIconActive}
               component={RecordScreen}
               title="Record"
               titleStyle={styles.navBarTitle}
@@ -48,9 +59,11 @@ export default class NavigationRouter extends Component {
               rightButtonTextStyle={styles.topActionLabel}/>
             
             <Scene 
-              key="tab3" 
+              key="tabProfile"
               title="PROFILE" 
               icon={TabIcon}
+              imageIcon={Images.profileIcon}
+              imageIconActivated={Images.profileIconActive}
               component={ProfileScreen}
               title="Profile"
               titleStyle={styles.navBarTitle}/>

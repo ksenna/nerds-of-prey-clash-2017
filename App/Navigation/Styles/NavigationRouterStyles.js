@@ -23,8 +23,11 @@ export default StyleSheet.create({
   },
 
   selectedTabItem: {
-    backgroundColor: Colors.black,
-    color: Colors.white
+    color: Colors.green
+  },
+
+  unselectedTabItem: {
+    color: Colors.black
   },
 
   topActionLabel: {
@@ -40,8 +43,9 @@ export default StyleSheet.create({
     }),
   },
 
-  unselectedTabItem: {
-    backgroundColor: Colors.white,
-    color: Colors.black
+  tabBar: {
+    paddingBottom: 11,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
