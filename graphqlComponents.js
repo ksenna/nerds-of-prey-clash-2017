@@ -16,8 +16,8 @@ query ClientsAndTagsQuery {
 }`;
 
 const TIME_TOTALS = gql`
-query GetTimeTotals($howMany: Int, $isBillable: Boolean) { 
-  totalTimeForDays(howMany: $howMany, isBillable: $isBillable) {
+query GetTimeTotals($howMany: Int) { 
+  totalTimeForDays(howMany: $howMany) {
     totals
   }
 }`;
@@ -201,7 +201,7 @@ const TestCompWithClientData = compose(
 
 const TestCompWithTotalsData = graphql(TIME_TOTALS, {
   options: { variables: {
-    howMany: 5,
+    howMany: 7,
     isBillable: true,
   } },
 })(TestTotalsComp);
@@ -225,4 +225,5 @@ export default {
   TestCompAddingActivity,
   CLIENTS_AND_TAGS,
   GET_ACTIVITIES,
+  TIME_TOTALS,
 };

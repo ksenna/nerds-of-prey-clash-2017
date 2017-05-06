@@ -19,8 +19,6 @@ const massageData = (data) => (
   }))
 );
 
-
-
 class DashboardScreen extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +27,7 @@ class DashboardScreen extends Component {
     this.state = {
       activityDataSource: dataSource.cloneWithRows([])
     };
-  } // TODO: Replace with real data
+  }
   
   render() {
     return(
