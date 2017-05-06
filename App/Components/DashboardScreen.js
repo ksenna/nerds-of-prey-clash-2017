@@ -9,15 +9,19 @@ import { gql, graphql, compose, withApollo } from 'react-apollo';
 import graphQL from '../../graphqlComponents';
 
 
-const massageData = (data) => (
-  data.map((d) => ({
+const massageData = (data) => {
+  let theData = data.map((d) => ({
     startTime: new Date(parseInt(d.tsStart, 10)), 
-    timeElapsed: new Date(parseInt(d.tsEnd, 10) - parseInt(d.tsStart, 10)), 
+    timeElapsed: (parseInt(d.tsEnd, 10) - parseInt(d.tsStart, 10)), 
     clientName: d.clients[0].name, 
     activityName: `#${d.tags[0].name}`, 
     billable: d.isBillable
-  }))
-);
+  }));
+
+  console.log(theData);
+
+  return theData;
+};
 
 class DashboardScreen extends Component {
   constructor(props) {
@@ -64,6 +68,7 @@ class DashboardScreen extends Component {
   }
 
   populateActivityListItem(rowData) {
+    console.log(`AAAAA: ${rowData.timeElapsed}`)
     return <ActivityListItem 
       clientName={rowData.clientName}
       activityName={rowData.activityName}
