@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableHighlight } from 'react-native';
 import moment from 'moment';
 import styles from './Styles/TimerStyles'
 import Images from '../Themes/Images'
@@ -13,9 +13,13 @@ export default class Timer extends Component {
     return(
       <View style={styles.container}>
         <View style={styles.timeContainer}>
-          {this.getArrowUpImage()}
+          <TouchableHighlight onPress={() => this.props.updateCountdownTime('increaseMinute')}>
+            {this.getArrowUpImage()}
+          </TouchableHighlight>
           <Text style={styles.clockText}>{this.getFormattedMinutes()}</Text>
-          {this.getArrowDownImage()}
+          <TouchableHighlight onPress={() => this.props.updateCountdownTime('decreaseMinute')}>
+            {this.getArrowDownImage()}
+          </TouchableHighlight>
           <Text style={styles.label}>MINUTES</Text>
         </View>
         <View style={styles.timeContainer}>
@@ -23,9 +27,13 @@ export default class Timer extends Component {
           <Text style={styles.label}></Text>
         </View>
         <View style={styles.timeContainer}>
-          {this.getArrowUpImage()}
+          <TouchableHighlight onPress={() => this.props.updateCountdownTime('increaseSecond')}>
+            {this.getArrowUpImage()}
+          </TouchableHighlight>
           <Text style={styles.clockText}>{this.getFormattedHSeconds()}</Text>
-          {this.getArrowDownImage()}
+          <TouchableHighlight onPress={() => this.props.updateCountdownTime('decreaseSecond')}>
+            {this.getArrowDownImage()}
+          </TouchableHighlight>
           <Text style={styles.label}>SECONDS</Text>
         </View>
       </View>
