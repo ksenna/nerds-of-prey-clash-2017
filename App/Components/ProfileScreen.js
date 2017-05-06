@@ -43,6 +43,36 @@ class ProfileScreen extends Component {
           <Image source={Images.avatar}/>
           <Text style={profileScreenStyles.name}>Samantha Beyer</Text>
         </View>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={profileScreenStyles.header}>CHALLENGES</Text>
+          <Text style={profileScreenStyles.challengeButtonText}>ADD +</Text>
+        </View>
+        <View style={profileScreenStyles.challengeContainer}>
+          <Image source={Images.trophy} style={{paddingLeft: 5}}/>
+          <View style={{flexDirection: 'column'}}>
+            <Text style={profileScreenStyles.challengeText}>Read 2 hours this week</Text>
+            <View style={profileScreenStyles.buttonContainer}>
+              <Button style={profileScreenStyles.leftButton}>.</Button>
+              <Button style={profileScreenStyles.rightButton}>.</Button>
+            </View>
+          </View>
+          <Text style={profileScreenStyles.challengeTimeCompletedText}>60 / 120 MIN</Text>
+          <Text>></Text>
+        </View>
+        <View style={profileScreenStyles.challengeContainer}>
+          <Image source={Images.trophy} style={{paddingLeft: 5}}/>
+          <View style={{flexDirection: 'column'}}>
+            <Text style={profileScreenStyles.challengeText}>Read 5 hours this week</Text>
+            <View style={profileScreenStyles.buttonContainer}>
+              <Button style={profileScreenStyles.leftButtonBigger}>.</Button>
+              <Button style={profileScreenStyles.rightButtonSmaller}>.</Button>
+            </View>
+          </View>
+          <Text style={profileScreenStyles.challengeTimeCompletedText}>300 / 360 MIN</Text>
+          <Text>></Text>
+        </View>
+        <View>
+        </View>
         <Text style={profileScreenStyles.header}>TAGS</Text>
         <View style={profileScreenStyles.tags}>
           {myTags}

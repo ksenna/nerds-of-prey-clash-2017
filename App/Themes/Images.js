@@ -9,7 +9,8 @@ const images = {
   profileIconActive: require('../Images/profile-icon-active.png'),
   arrowDown: require('../Images/arrow-down.png'),
   arrowUp: require('../Images/arrow-up.png'),
-  avatar: require('../Images/avatar.png')
+  avatar: require('../Images/avatar.png'),
+  trophy: require('../Images/trophy.png')
 }
 
 export default images
