@@ -51,6 +51,7 @@ export default class DashboardScreen extends Component {
     return <ActivityListItem 
       clientName={rowData.clientName}
       activityName={rowData.activityName}
+      billable={rowData.billable}
       timeElapsed={rowData.timeElapsed}
       startTime={rowData.startTime}/>;
   }

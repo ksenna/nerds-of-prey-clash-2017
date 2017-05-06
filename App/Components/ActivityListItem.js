@@ -32,9 +32,13 @@ export default class ActivityListItem extends Component {
     if (this.props.clientName == '') {
       return <Text style={styles.activityName}>{this.props.activityName}</Text>
     } else {
+      let clientName = this.props.clientName;
+      if (this.props.billable) {
+        clientName += ', Billable';
+      }
       return <View>
               <Text style={styles.activityName}>{this.props.activityName}</Text>
-              <Text style={styles.clientName}>{this.props.clientName}</Text>
+              <Text style={styles.clientName}>{clientName}</Text>
             </View>
     }
   }
