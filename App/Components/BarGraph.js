@@ -47,7 +47,14 @@ export default class BarGraph extends Component {
 
     let options = {
       height: 200,
-      width: 350,
+      ...Platform.select({
+        ios: {
+          width: 320
+        },
+        android: {
+          width: 350
+        }
+      }),
       margin: {
         top: 20,
         left: 25,
