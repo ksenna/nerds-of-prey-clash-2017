@@ -21,7 +21,7 @@ const formatDataForGraph = (dataArray) => {
   
   return [dataArray.map((d, i) => (
     {
-      "v": parseInt(d, 10) / 1000,
+      "v": ((parseInt(d, 10) / 1000) / 60) % 60,
       "name": now.clone().subtract(6-i, 'd').format('ddd').toUpperCase()
     }
   ))];
