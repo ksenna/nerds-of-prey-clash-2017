@@ -7,6 +7,7 @@ import { Router, Scene, TabBar } from 'react-native-router-flux';
 import styles from './Styles/NavigationRouterStyles';
 import DashboardScreen from '../Components/DashboardScreen';
 import RecordScreen from '../Components/RecordScreen';
+import SaveConfirmationScreen from '../Components/SaveConfirmationScreen';
 import ProfileScreen from '../Components/ProfileScreen';
 
 class TabIcon extends React.Component {
@@ -55,6 +56,18 @@ export default class NavigationRouter extends Component {
               title="Profile"
               titleStyle={styles.navBarTitle}/>
           </Scene>
+          <Scene key="saveConfirmationScreen"
+            component={SaveConfirmationScreen}
+            title="Save"
+            titleStyle={styles.navBarTitle}
+            hideNavBar={false}
+            hideBackImage={true}
+            onLeft={()=>alert("Left button!")}
+            leftTitle="Resume"
+            leftButtonTextStyle={styles.topActionLabel}
+            onRight={()=>alert("Right button!")}
+            rightTitle="Save"
+            rightButtonTextStyle={styles.topActionLabel}/>
         </Scene>
       </Router>
     );
