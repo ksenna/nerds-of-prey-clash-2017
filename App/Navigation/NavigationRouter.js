@@ -12,6 +12,7 @@ import RecordScreen from '../Components/RecordScreen';
 import SaveConfirmationScreen from '../Components/SaveConfirmationScreen';
 import ProfileScreen from '../Components/ProfileScreen';
 import Images from '../Themes/Images';
+import { Actions } from 'react-native-router-flux';
 
 class TabIcon extends React.Component {
   render() {
@@ -78,7 +79,7 @@ export default class NavigationRouter extends Component {
             onLeft={()=>alert("Left button!")}
             leftTitle="Resume"
             leftButtonTextStyle={styles.topActionLabel}
-            onRight={()=>alert("Right button!")}
+            onRight={() => Actions.pop()}
             rightTitle="Save"
             rightButtonTextStyle={styles.topActionLabel}/>
         </Scene>
