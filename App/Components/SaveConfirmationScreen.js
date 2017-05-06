@@ -15,12 +15,14 @@ export default class SaveConfirmationScreen extends Component {
   getFormattedSeconds() {
     let offsetSeconds = this.props.finalOffset % 60
     let elapsedSeconds = moment(this.props.timeElapsed).seconds();
-    return moment((60 + offsetSeconds) % elapsedSeconds, 'seconds').format('ss');
+    let seconds = this.props.finalOffset == 0 ? elapsedSeconds : ((60 + offsetSeconds) % elapsedSeconds);
+    return moment(seconds, 'seconds').format('ss');
   }
 
   getFormattedMinutes() {
+    let bonusOffset = this.props.finalOffset == 0 ? 0 : 1;
     let offsetMinutes = this.props.finalOffset / 60;
-    let elapsedMinutes = moment(this.props.timeElapsed).minutes() + 1;
+    let elapsedMinutes = moment(this.props.timeElapsed).minutes() + bonusOffset;
     return moment(offsetMinutes - elapsedMinutes, 'minutes').format('mm');
   }
 
