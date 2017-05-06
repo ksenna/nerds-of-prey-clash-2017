@@ -48,10 +48,54 @@ export default StyleSheet.create({
     })
   },
 
+  challengeButtonText: {
+    color: Colors.green,
+    paddingRight: 15
+  },
+
   tags: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginHorizontal: 6,
     marginBottom: 24
+  },
+
+  challengeContainer: {
+    height: 48,
+    flexDirection: 'row',
+    marginLeft: 15,
+    paddingTop: 15,
+    marginBottom: 10,
+    paddingBottom: 5,
+    borderBottomColor: Colors.greyish,
+    borderBottomWidth: 0.5,
+    justifyContent: 'space-around'
+  },
+
+  challengeText: {
+    fontSize: Fonts.size.small,
+    paddingLeft: 25,
+    ...Platform.select({
+      ios: {
+        fontFamily: Fonts.type.iosBase
+      },
+      android: {
+        fontFamily: Fonts.type.androidBase
+      }
+    })
+  },
+
+  challengeTimeCompletedText: {
+    fontSize: Fonts.size.small,
+    color: Colors.black,
+    paddingLeft: 25,
+    ...Platform.select({
+      ios: {
+        fontFamily: Fonts.type.iosAccent
+      },
+      android: {
+        fontFamily: Fonts.type.androidAccent
+      }
+    })
   }
 })

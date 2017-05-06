@@ -18,6 +18,22 @@ export default class ProfileScreen extends Component {
           <Image source={Images.avatar}/>
           <Text style={profileScreenStyles.name}>Samantha Beyer</Text>
         </View>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text style={profileScreenStyles.header}>CHALLENGES</Text>
+          <Text style={profileScreenStyles.challengeButtonText}>ADD +</Text>
+        </View>
+        <View style={profileScreenStyles.challengeContainer}>
+          <Image source={Images.trophy} style={{paddingLeft: 5}}/>
+          <Text style={profileScreenStyles.challengeText}>Read 2 hours this week</Text>
+          <Text style={profileScreenStyles.challengeTimeCompletedText}>50 / 120 MIN</Text>
+        </View>
+        <View style={profileScreenStyles.challengeContainer}>
+          <Image source={Images.trophy} style={{paddingLeft: 5}}/>
+          <Text style={profileScreenStyles.challengeText}>Read 2 hours this week</Text>
+          <Text style={profileScreenStyles.challengeTimeCompletedText}>50 / 120 MIN</Text>
+        </View>
+        <View>
+        </View>
         <Text style={profileScreenStyles.header}>TAGS</Text>
         <View style={profileScreenStyles.tags}>
           <Button
