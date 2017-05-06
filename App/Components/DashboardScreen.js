@@ -24,7 +24,7 @@ export default class DashboardScreen extends Component {
   
   render() {
     return(
-      <View>
+      <View style={dashboardScreenStyles.container}>
         <ActivityGraph/> 
         <Text style={dashboardScreenStyles.recentActivityHeader}>RECENT ACTIVITY</Text>
         <ListView
