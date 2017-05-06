@@ -51,6 +51,7 @@ export default StyleSheet.create({
   },
 
   tabBarBackground: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    height: 72
   }
 })

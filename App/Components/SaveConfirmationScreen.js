@@ -56,8 +56,10 @@ export default class SaveConfirmationScreen extends Component {
             </View>
           </View>
           <View style={styles.billableContainer}>
-            <Text style={styles.billableLabel}>{this.props.clientName}</Text>
+            <Text style={styles.billableLabel}>BILLABLE</Text>
             <Switch
+              thumbTintColor={Colors.green}
+              onTintColor={Colors.black}
               style={styles.switchStyle}
               value={true}
             />

@@ -69,6 +69,8 @@ export default class Clock extends Component {
         <View style={styles.billableContainer}>
           <Text style={styles.billableLabel}>BILLABLE</Text>
           <Switch
+            thumbTintColor={Colors.green}
+            onTintColor={Colors.black}
             onValueChange={(value) => this.setState({billable: value})}
             value={this.state.billable}
           />

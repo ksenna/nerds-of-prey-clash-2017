@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableWithoutFeedback, Platform } from 'react-native';
 import { Colors, Fonts } from '../Themes/'
 import { Bar } from 'react-native-pathjs-charts'
+import { gql, graphql, compose, withApollo } from 'react-apollo';
+import graphQL from '../../graphqlComponents';
+import moment from 'moment';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,38 +16,35 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class BarGraph extends Component {
-  render() {
-    let data = [
-      [{
-        "v": 70,
-        "name": "MON"
-      }, {
-        "v": 55,
-        "name": "TUE"
-      },
-      {
-        "v": 20,
-        "name": "WED"
-      },
-      {
-        "v": 120,
-        "name": "THU"
-      },
-      {
-        "v": 75,
-        "name": "FRI"
-      },
-      {
-        "v": 20,
-        "name": "SAT"
-      },
-      {
-        "v": 0,
-        "name": "SUN"
-      }]
-    ]
+const formatDataForGraph = (dataArray) => {
+  let now = moment();
+  
+  return [dataArray.map((d, i) => (
+    {
+      "v": ((parseInt(d, 10) / 1000) / 60) % 60,
+      "name": now.clone().subtract(6-i, 'd').format('ddd').toUpperCase()
+    }
+  ))];
+};
 
+class BarGraph extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: []
+    }
+  }
+
+  componentWillReceiveProps({data}) {
+    if (!data.loading) {
+      console.log(data.totalTimeForDays.totals)
+      this.setState({
+        data: formatDataForGraph(data.totalTimeForDays.totals)
+      });
+    }
+  }
+
+  render() {
     let options = {
       height: 200,
       ...Platform.select({
@@ -114,8 +114,16 @@ export default class BarGraph extends Component {
 
     return (
       <View style={styles.container}>
-        <Bar data={data} options={options} accessorKey='v'/>
+        <Bar data={this.state.data} options={options} accessorKey='v'/>
       </View>
     )
   }
 }
+
+
+const BarGraphWithGraphQL = graphql(graphQL.TIME_TOTALS, {
+  options: { variables: {
+    howMany: 7,
+  } },
+})(BarGraph);
+export default BarGraphWithGraphQL;
