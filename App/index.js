@@ -4,6 +4,8 @@ import {
   View
 } from 'react-native';
 import NavigationRouter from './Navigation/NavigationRouter';
+import { ApolloProvider } from 'react-apollo';
+import client from '../createApolloClient';
 
 export default class NerdsOfPrey extends Component {
   constructor(props) {
@@ -11,7 +13,11 @@ export default class NerdsOfPrey extends Component {
   }
 
   render() {
-    return (<NavigationRouter/>);
+    return (
+      <ApolloProvider client={client}>
+        <NavigationRouter/>
+      </ApolloProvider> 
+    );
   }
 }
 

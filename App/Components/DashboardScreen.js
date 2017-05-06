@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { View, Text } from 'react-native';
 import styles from '../Navigation/Styles/TabViewStyles';
+import Activities from '../../activitiesComponent';
 
 export default class DashboardScreen extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class DashboardScreen extends Component {
   render() {
     return(
       <View style={[styles.container, this.props.sceneStyle ]}>
-        <Text>TODO</Text>
+        <Activities />
       </View>
     );
   }
