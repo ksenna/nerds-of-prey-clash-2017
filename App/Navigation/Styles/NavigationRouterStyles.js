@@ -44,8 +44,13 @@ export default StyleSheet.create({
   },
 
   tabBar: {
-    paddingBottom: 11,
+    paddingBottom: 15,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingTop: 15,
+  },
+
+  tabBarBackground: {
+    backgroundColor: 'white'
   }
 })

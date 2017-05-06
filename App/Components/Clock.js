@@ -20,7 +20,8 @@ export default class Clock extends Component {
       running: false,
       clientName: '',
       billable: false,
-      allTimeData: []
+      allTimeData: [],
+      finalOffset: this.props.offset
     }
 
     this.onTimerStarted = this.onTimerStarted.bind(this);

@@ -12,6 +12,7 @@ import RecordScreen from '../Components/RecordScreen';
 import SaveConfirmationScreen from '../Components/SaveConfirmationScreen';
 import ProfileScreen from '../Components/ProfileScreen';
 import Images from '../Themes/Images';
+import { Actions } from 'react-native-router-flux';
 
 class TabIcon extends React.Component {
   render() {
@@ -34,10 +35,10 @@ export default class NavigationRouter extends Component {
     return (
       <Router navigationBarStyle={styles.navBar}>
         <Scene key="root" hideNavBar={true}>
-          <Scene key='tabbar' tabs={true} hideNavBar>
+          <Scene key='tabbar' tabs={true} hideNavBar tabBarStyle={styles.tabBarBackground}>
             <Scene 
               key="tabDashboard" 
-              title="DASHBOARD" 
+              title="DASHBOARD"
               icon={TabIcon}
               imageIcon={Images.dashboardIcon}
               imageIconActivated={Images.dashboardIconActive}
@@ -54,11 +55,7 @@ export default class NavigationRouter extends Component {
               imageIconActivated={Images.recordIconActive}
               component={RecordScreen}
               title="Record"
-              titleStyle={styles.navBarTitle}
-              onRight={()=>alert("Left button!")}
-              rightTitle="CLOSE"
-              rightButtonTextStyle={styles.topActionLabel}/>
-            
+              titleStyle={styles.navBarTitle}/>
             <Scene 
               key="tabProfile"
               title="PROFILE" 
@@ -81,7 +78,7 @@ export default class NavigationRouter extends Component {
             onLeft={()=>alert("Left button!")}
             leftTitle="Resume"
             leftButtonTextStyle={styles.topActionLabel}
-            onRight={()=>alert("Right button!")}
+            onRight={() => Actions.pop()}
             rightTitle="Save"
             rightButtonTextStyle={styles.topActionLabel}/>
         </Scene>
