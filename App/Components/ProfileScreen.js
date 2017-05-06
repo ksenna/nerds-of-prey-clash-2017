@@ -68,7 +68,7 @@ class ProfileScreen extends Component {
               <Button style={profileScreenStyles.rightButtonSmaller}>.</Button>
             </View>
           </View>
-          <Text style={profileScreenStyles.challengeTimeCompletedText}>300 / 360 MIN</Text>
+          <Text style={profileScreenStyles.challengeTimeCompletedText}>240 / 300 MIN</Text>
           <Text>></Text>
         </View>
         <View>
