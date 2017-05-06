@@ -7,10 +7,10 @@ export default StyleSheet.create({
     alignContent: 'flex-start',
     ...Platform.select({
       ios: {
-        marginTop: 62
+        marginTop: 66
       },
       android: {
-        marginTop: 50
+        marginTop: 54
       }
     }) 
   },
