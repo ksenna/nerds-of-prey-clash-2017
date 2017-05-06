@@ -15,8 +15,8 @@ export default class ProfileScreen extends Component {
     return(
       <View style={profileScreenStyles.container}>
         <View style={profileScreenStyles.nameplate}>
-          <Image source={Images.profileIcon}/>
-          <Text style={profileScreenStyles.name}>Aaron Hillegass</Text>
+          <Image source={Images.avatar}/>
+          <Text style={profileScreenStyles.name}>Samantha Beyer</Text>
         </View>
         <Text style={profileScreenStyles.header}>TAGS</Text>
         <View style={profileScreenStyles.tags}>
