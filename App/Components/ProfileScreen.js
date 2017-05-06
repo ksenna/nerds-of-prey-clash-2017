@@ -24,13 +24,27 @@ export default class ProfileScreen extends Component {
         </View>
         <View style={profileScreenStyles.challengeContainer}>
           <Image source={Images.trophy} style={{paddingLeft: 5}}/>
-          <Text style={profileScreenStyles.challengeText}>Read 2 hours this week</Text>
+          <View style={{flexDirection: 'column'}}>
+            <Text style={profileScreenStyles.challengeText}>Read 2 hours this week</Text>
+            <View style={profileScreenStyles.buttonContainer}>
+              <Button style={profileScreenStyles.leftButton}>.</Button>
+              <Button style={profileScreenStyles.rightButton}>.</Button>
+            </View>
+          </View>
           <Text style={profileScreenStyles.challengeTimeCompletedText}>50 / 120 MIN</Text>
+          <Text>></Text>
         </View>
         <View style={profileScreenStyles.challengeContainer}>
           <Image source={Images.trophy} style={{paddingLeft: 5}}/>
-          <Text style={profileScreenStyles.challengeText}>Read 2 hours this week</Text>
+          <View style={{flexDirection: 'column'}}>
+            <Text style={profileScreenStyles.challengeText}>Read 2 hours this week</Text>
+            <View style={profileScreenStyles.buttonContainer}>
+              <Button style={profileScreenStyles.leftButton}>.</Button>
+              <Button style={profileScreenStyles.rightButton}>.</Button>
+            </View>
+          </View>
           <Text style={profileScreenStyles.challengeTimeCompletedText}>50 / 120 MIN</Text>
+          <Text>></Text>
         </View>
         <View>
         </View>
