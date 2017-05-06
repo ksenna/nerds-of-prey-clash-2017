@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { gql, graphql, compose } from 'react-apollo';
+import { gql, graphql, compose, withApollo } from 'react-apollo';
 import { View, Text, Button } from 'react-native';
 
 const CLIENTS_AND_TAGS = gql`
@@ -23,15 +23,17 @@ query GetTimeTotals($howMany: Int, $isBillable: Boolean) {
 }`;
 
 const ADD_CLIENT = gql`
-mutation AddClient($name: String) { 
+mutation AddClient($name: String!) { 
   addClient(name: $name) {
+    id
     name
   }
 }`;
 
 const ADD_TAG = gql`
-mutation AddTag($name: String) { 
+mutation AddTag($name: String!) { 
   addTag(name: $name) {
+    id
     name
   }
 }`;
@@ -105,23 +107,48 @@ const TestComp = ({
   </View>);
 };
 
-const TestAddClientComp = ({
-  mutate 
-}) => {
-
+const TestAddClientComp = (props) => {
   return (
     <View>
-      <Button title="add a client" onPress={() => mutate()}/>
+      <Button title="add a client" onPress={() => {
+        props.client.mutate({
+          mutation: ADD_CLIENT,
+          variables: {
+            name: 'bobbeh'
+          }
+        }).then(response => {
+          console.log(`${response.data.addClient.id} is the NEW ID!!!!!!`);
+        })
+      }}/>
     </View>);
 };
 
-const TestCompAddingClient = compose(
-  graphql(ADD_CLIENT, {
-    options: { variables: {
-      name: "bobbeh",
-    }},
-  }),
-)(TestAddClientComp);
+const TestAddTagComp = (props) => {
+  return (
+    <View>
+      <Button title="add a tag" onPress={() => {
+        props.client.mutate({
+          mutation: ADD_TAG,
+          variables: {
+            name: 'poopin'
+          }
+        }).then(response => {
+          console.log(`${response.data.addTag.id} is the NEW ID!!!!!!`);
+        })
+      }}/>
+    </View>);
+};
+
+
+const TestCompAddingClient = withApollo(TestAddClientComp);
+const TestCompAddingTag = withApollo(TestAddTagComp);
+// const TestCompAddingClient = compose(
+//   graphql(ADD_CLIENT, {
+//     options: { variables: {
+//       name: "bobbeh",
+//     }},
+//   }),
+// )(TestAddClientComp);
 
 const TestCompWithClientData = compose(
   graphql(CLIENTS_AND_TAGS)
@@ -149,4 +176,5 @@ export default {
   TestCompWithClientData,
   TestCompWithTotalsData,
   TestCompAddingClient,
+  TestCompAddingTag,
 };
