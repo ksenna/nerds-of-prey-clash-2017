@@ -115,5 +115,17 @@ export default StyleSheet.create({
     backgroundColor: Colors.warmGrey,
     height: 2,
     width: 70
+  },
+
+  leftButtonBigger: {
+    backgroundColor: '#1d57ff',
+    height: 2,
+    width: 95
+  },
+
+  rightButtonSmaller: {
+    backgroundColor: Colors.warmGrey,
+    height: 2,
+    width: 30
   }
 })
