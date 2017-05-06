@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Platform, Switch, Text, TextInput, View } from 'react-native';
+import { AsyncStorage, Platform, Switch, Text, TextInput, View } from 'react-native';
 import ClockControl from './ClockControl';
 import Timer from './Timer';
 import moment from 'moment';
 import TagInput from './TagInput'
 import styles from './Styles/ClockStyles'
 import { Colors } from '../Themes/'
+import { Actions } from 'react-native-router-flux';
+
 
 const timer = require('react-native-timer');
 
@@ -17,12 +19,26 @@ export default class Clock extends Component {
       timeElapsed: this.roundToNextMinute(moment(moment().add(this.props.offset, 'minutes').diff(moment()))),
       running: false,
       clientName: '',
-      billable: false
+      billable: false,
+      allTimeData: []
     }
 
     this.onTimerStarted = this.onTimerStarted.bind(this);
     this.onTimerStopped = this.onTimerStopped.bind(this);
     this.onTimerToggled = this.onTimerToggled.bind(this);
+  }
+
+  componentWillMount() {
+    AsyncStorage.getItem("timeData").then((json) => {
+      try {
+        const timeData = JSON.parse(json);
+        this.setState({
+          allTimeData: [timeData]
+        })
+      } catch(e) {
+        console.log("Error fetching data from AsyncStorage")
+      }
+    })
   }
 
   render() {
@@ -104,5 +120,8 @@ export default class Clock extends Component {
       timeElapsed: moment(moment().add(this.props.offset, 'minutes').diff(moment())),
       running: false
     });
+    AsyncStorage.setItem("timeData", JSON.stringify(this.state))
+
+    Actions.saveConfirmationScreen(this.state)
   }
 }
