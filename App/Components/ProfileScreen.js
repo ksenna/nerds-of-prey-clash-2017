@@ -19,6 +19,7 @@ class ProfileScreen extends Component {
                   ? (<Text>Loading...</Text>)
                   : this.props.data.tags.map((tag) => (
                       <Button
+                        key={tag.id}
                         containerStyle={tagComponentStyles.container}
                         style={tagComponentStyles.tag}
                         >#{tag.name}</Button>
@@ -29,6 +30,7 @@ class ProfileScreen extends Component {
                   ? (<Text>Loading...</Text>)
                   : this.props.data.clients.map((client) => (
                       <Button
+                        key={client.id}
                         containerStyle={tagComponentStyles.container}
                         style={tagComponentStyles.tag}
                         >{client.name}</Button>
