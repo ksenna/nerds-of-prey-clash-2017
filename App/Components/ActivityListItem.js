@@ -13,7 +13,7 @@ export default class ActivityListItem extends Component {
       <View style={styles.container}>
         <Text style={styles.startTime}>{this.getFormattedStartTime()}</Text>
         <View style={styles.mainContainer}>
-          <Text style={styles.clientName}>{this.props.clientName}</Text>
+          {this.getActivityMetadata()}
           <Text style={styles.timeElapsed}>{this.getFormattedTimeElapsed()}</Text>
         </View>
       </View>
@@ -26,5 +26,16 @@ export default class ActivityListItem extends Component {
 
   getFormattedTimeElapsed() {
     return moment(this.props.timeElasped).utcOffset('+0000').format('h:mm');
+  }
+
+  getActivityMetadata() {
+    if (this.props.clientName == '') {
+      return <Text style={styles.activityName}>{this.props.activityName}</Text>
+    } else {
+      return <View>
+              <Text style={styles.activityName}>{this.props.activityName}</Text>
+              <Text style={styles.clientName}>{this.props.clientName}</Text>
+            </View>
+    }
   }
 }

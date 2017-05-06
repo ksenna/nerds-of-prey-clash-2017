@@ -34,6 +34,19 @@ export default StyleSheet.create({
   },
 
   clientName: {
+    color: Colors.warmGrey,
+    fontSize: Fonts.size.small,
+    ...Platform.select({
+      ios: {
+        fontFamily: Fonts.type.iosBase
+      },
+      android: {
+        fontFamily: Fonts.type.androidBase
+      }
+    })
+  },
+
+  activityName: {
     fontSize: Fonts.size.medium,
     ...Platform.select({
       ios: {
