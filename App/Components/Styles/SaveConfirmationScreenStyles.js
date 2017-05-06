@@ -129,7 +129,6 @@ export default StyleSheet.create({
       android: {
 
       }
-    })
+    }),
   }
-
 })
