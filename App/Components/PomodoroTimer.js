@@ -7,7 +7,7 @@ export default class PomodoroTimer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      offset: 20,
+      offset: 1200,
       countdown: true
     }
   }
