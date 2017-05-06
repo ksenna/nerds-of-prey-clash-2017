@@ -23,7 +23,7 @@ export default StyleSheet.create({
 
   billableContainer: {
     paddingTop: 15,
-    paddingBottom: 10,
+    paddingBottom: 15,
     borderBottomColor: Colors.greyish,
     borderBottomWidth: 0.5,
     flexDirection: 'row',

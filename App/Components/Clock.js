@@ -26,6 +26,7 @@ export default class Clock extends Component {
     this.onTimerStarted = this.onTimerStarted.bind(this);
     this.onTimerStopped = this.onTimerStopped.bind(this);
     this.onTimerToggled = this.onTimerToggled.bind(this);
+    this.onCountdownOffsetChange = this.onCountdownOffsetChange.bind(this);
   }
 
   componentWillMount() {
@@ -41,10 +42,18 @@ export default class Clock extends Component {
     })
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.offset) {
+      this.setState({
+        timeElapsed: moment(moment().add(nextProps.offset, 'seconds').diff(moment()))
+      })
+    }
+  }
+
   render() {
     return(
       <View>
-        <Timer timeElapsed={this.state.timeElapsed} countdown={this.props.countdown} running={this.state.running}/>
+        <Timer timeElapsed={this.state.timeElapsed} countdown={this.props.countdown} running={this.state.running} updateCountdownTime={this.onCountdownOffsetChange}/>
         <TagInput />
         <View style={styles.inputContainer}>
           <TextInput
@@ -85,6 +94,10 @@ export default class Clock extends Component {
     } else {
       this.onTimerStarted();
     }
+  }
+
+  onCountdownOffsetChange(offsetChange) {
+    this.props.updateCountdownTime(offsetChange);
   }
 
   onTimerStarted() {
@@ -135,5 +148,7 @@ export default class Clock extends Component {
     Actions.saveConfirmationScreen(this.state)
 
     this.state.clientName = ''
+
+    this.props.updateCountdownTime('resetToDefault');
   }
 }
