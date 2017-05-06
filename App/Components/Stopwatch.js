@@ -15,8 +15,12 @@ export default class Stopwatch extends Component {
   render() {
     return(
       <View>
-        <Clock offset={this.state.offset} countdown={this.state.countdown}/>
+        <Clock offset={this.state.offset} countdown={this.state.countdown} updateCountdownTime={this.noOpLol}/>
       </View>
     );
+  }
+
+  noOpLol(offsetChange) {
+
   }
 }
