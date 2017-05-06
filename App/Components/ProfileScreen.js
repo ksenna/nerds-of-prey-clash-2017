@@ -6,12 +6,25 @@ import profileScreenStyles from './Styles/ProfileScreenStyles';
 import Button from 'react-native-button';
 import Images from '../Themes/Images';
 
-export default class ProfileScreen extends Component {
+import { gql, graphql, compose, withApollo } from 'react-apollo';
+import graphQL from '../../graphqlComponents';
+
+class ProfileScreen extends Component {
   constructor(props) {
     super(props);
   }
   
   render() {
+    const myTags = this.props.data.loading 
+                  ? (<Text>Loading...</Text>)
+                  : this.props.data.tags.map((tag) => (
+                      <Button
+                        containerStyle={tagComponentStyles.container}
+                        style={tagComponentStyles.tag}
+                        >#{tag.name}</Button>
+                    ))
+
+
     return(
       <View style={profileScreenStyles.container}>
         <View style={profileScreenStyles.nameplate}>
@@ -20,32 +33,11 @@ export default class ProfileScreen extends Component {
         </View>
         <Text style={profileScreenStyles.header}>TAGS</Text>
         <View style={profileScreenStyles.tags}>
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >#reading</Button>
+        
+        {myTags}
 
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >#coding</Button>
-          
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >#meeting</Button>
 
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >#collaboration</Button>
-
-          <Button
-            containerStyle={tagComponentStyles.container}
-            style={tagComponentStyles.tag}
-            >#meditation</Button>
-          </View>
-
+        </View>
         <Text style={profileScreenStyles.header}>CLIENTS</Text>
         <View style={profileScreenStyles.tags}>
           <Button
@@ -92,3 +84,7 @@ export default class ProfileScreen extends Component {
     );
   }
 }
+
+const ProfileScreenWithGraphQL = graphql(graphQL.CLIENTS_AND_TAGS)(ProfileScreen);
+
+export default ProfileScreenWithGraphQL;

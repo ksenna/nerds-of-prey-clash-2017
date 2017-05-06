@@ -207,4 +207,5 @@ export default {
   TestCompAddingClient,
   TestCompAddingTag,
   TestCompAddingActivity,
+  CLIENTS_AND_TAGS,
 };
