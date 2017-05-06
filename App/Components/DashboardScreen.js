@@ -4,7 +4,7 @@ import styles from '../Navigation/Styles/TabViewStyles';
 import graphql from '../../graphqlComponents';
 
 // ok, so...why can't i destructure?
-const Comp = graphql.TestCompAddingTag;
+const Comp = graphql.TestCompAddingActivity;
 
 export default class DashboardScreen extends Component {
   constructor(props) {
