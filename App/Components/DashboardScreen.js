@@ -5,6 +5,8 @@ import graphql from '../../graphqlComponents';
 
 // ok, so...why can't i destructure?
 const Comp = graphql.TestCompAddingActivity;
+const Datas = graphql.TestCompWithTotalsData;
+const Stuffs = graphql.TestCompWithClientData;
 
 export default class DashboardScreen extends Component {
   constructor(props) {
@@ -14,7 +16,9 @@ export default class DashboardScreen extends Component {
   render() {
     return(
       <View style={[styles.container, this.props.sceneStyle ]}>
+        <Datas />
         <Comp />
+        <Stuffs />
       </View>
     );
   }
