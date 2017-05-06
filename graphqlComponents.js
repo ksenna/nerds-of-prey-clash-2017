@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { gql, graphql, compose } from 'react-apollo';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 const CLIENTS_AND_TAGS = gql`
 query ClientsAndTagsQuery { 
@@ -19,6 +19,20 @@ const TIME_TOTALS = gql`
 query GetTimeTotals($howMany: Int, $isBillable: Boolean) { 
   totalTimeForDays(howMany: $howMany, isBillable: $isBillable) {
     totals
+  }
+}`;
+
+const ADD_CLIENT = gql`
+mutation AddClient($name: String) { 
+  addClient(name: $name) {
+    name
+  }
+}`;
+
+const ADD_TAG = gql`
+mutation AddTag($name: String) { 
+  addTag(name: $name) {
+    name
   }
 }`;
 
@@ -91,7 +105,28 @@ const TestComp = ({
   </View>);
 };
 
-const TestCompWithClientData = graphql(CLIENTS_AND_TAGS)(TestComp);
+const TestAddClientComp = ({
+  mutate 
+}) => {
+
+  return (
+    <View>
+      <Button title="add a client" onPress={() => mutate()}/>
+    </View>);
+};
+
+const TestCompAddingClient = compose(
+  graphql(ADD_CLIENT, {
+    options: { variables: {
+      name: "bobbeh",
+    }},
+  }),
+)(TestAddClientComp);
+
+const TestCompWithClientData = compose(
+  graphql(CLIENTS_AND_TAGS)
+)(TestComp);
+
 const TestCompWithTotalsData = graphql(TIME_TOTALS, {
   options: { variables: {
     howMany: 5,
@@ -110,4 +145,8 @@ export default compose(
 
 */
 
-export default TestCompWithTotalsData;
+export default {
+  TestCompWithClientData,
+  TestCompWithTotalsData,
+  TestCompAddingClient,
+};
