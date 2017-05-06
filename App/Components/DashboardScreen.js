@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { View, Text, ListView } from 'react-native';
-import styles from '../Navigation/Styles/TabViewStyles';
+import tabViewStyles from '../Navigation/Styles/TabViewStyles';
+import dashboardScreenStyles from './Styles/DashboardScreenStyles';
+import ActivityGraph from './ActivityGraph';
 import ActivityListItem from './ActivityListItem';
 
 export default class DashboardScreen extends Component {
@@ -22,9 +24,9 @@ export default class DashboardScreen extends Component {
   
   render() {
     return(
-      <View >
-        <Text>Recent Activity</Text>
-        
+      <View>
+        <ActivityGraph/>
+        <Text style={dashboardScreenStyles.recentActivityHeader}>RECENT ACTIVITY</Text>
         <ListView
           dataSource={this.state.activityDataSource}
           renderRow={this.populateActivityListItem}/>
