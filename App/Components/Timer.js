@@ -40,11 +40,15 @@ export default class Timer extends Component {
     return moment(this.props.timeElapsed).utcOffset('+0000').format('mm');
   }
 
+  getArrowsVisible() {
+    return this.props.countdown && !this.props.running;
+  }
+
   getArrowUpImage() {
-    return this.props.countdown ? <Image source={Images.arrowUp} style={styles.arrowUp}/> : <Image/>
+    return this.getArrowsVisible() ? <Image source={Images.arrowUp} style={styles.arrowUp}/> : <Image/>
   }
 
   getArrowDownImage() {
-    return this.props.countdown ? <Image source={Images.arrowDown} style={styles.arrowDown}/> : <Image/>
+    return this.getArrowsVisible() ? <Image source={Images.arrowDown} style={styles.arrowDown}/> : <Image/>
   }
 }

@@ -28,7 +28,7 @@ export default class Clock extends Component {
   render() {
     return(
       <View>
-        <Timer timeElapsed={this.state.timeElapsed} countdown={this.props.countdown}/>
+        <Timer timeElapsed={this.state.timeElapsed} countdown={this.props.countdown} running={this.state.running}/>
         <TagInput />
         <View style={styles.inputContainer}>
           <TextInput
