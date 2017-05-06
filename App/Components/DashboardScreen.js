@@ -40,7 +40,8 @@ class DashboardScreen extends Component {
         <Text style={dashboardScreenStyles.recentActivityHeader}>RECENT ACTIVITY</Text>
         <ListView
           dataSource={this.state.activityDataSource}
-          renderRow={this.populateActivityListItem}/>
+          renderRow={this.populateActivityListItem}
+          enableEmptySections={true}/>
       </View>
     );
   }
