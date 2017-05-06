@@ -3,11 +3,13 @@ import { Colors, Fonts } from '../../Themes/'
 
 export default StyleSheet.create({
   container: {
+    alignSelf: 'center',
     overflow: 'hidden',
     backgroundColor: Colors.green,
     borderRadius: 3,
-    paddingHorizontal: 18,
-    paddingVertical: 6
+    paddingHorizontal: 12,
+    padding: 6,
+    margin: 6
   },
 
   tag: {
