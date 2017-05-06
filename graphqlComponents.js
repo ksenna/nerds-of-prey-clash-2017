@@ -38,6 +38,13 @@ mutation AddTag($name: String!) {
   }
 }`;
 
+const ADD_ACTIVITY = gql`
+mutation AddActivity($tsStart: String!, $tsEnd: String!, $clientId: Int, $tags: [Int]) { 
+  addActivity(tsStart: $tsStart, tsEnd: $tsEnd, clientId: $clientId, tags: $tags) {
+    id
+  }
+}`;
+
 
 /*
 const TIME_TOTALS = gql`
@@ -140,8 +147,30 @@ const TestAddTagComp = (props) => {
 };
 
 
+const TestAddActivityComp = (props) => {
+  console.log(props);
+  return (
+    <View>
+      <Button title="add an activity" onPress={() => {
+        props.client.mutate({
+          mutation: ADD_ACTIVITY,
+          variables: {
+            tsStart: `${(new Date()).getTime()}`,
+            tsEnd: `${(new Date()).getTime() + 40000}`,
+            clientId: 1,
+            tags: [1, 2]
+          }
+        }).then(response => {
+          console.log(`${response.data.addActivity.id} is the NEW ID!!!!!!`);
+        })
+      }}/>
+    </View>);
+};
+
+
 const TestCompAddingClient = withApollo(TestAddClientComp);
 const TestCompAddingTag = withApollo(TestAddTagComp);
+const TestCompAddingActivity = withApollo(TestAddActivityComp);
 // const TestCompAddingClient = compose(
 //   graphql(ADD_CLIENT, {
 //     options: { variables: {
@@ -177,4 +206,5 @@ export default {
   TestCompWithTotalsData,
   TestCompAddingClient,
   TestCompAddingTag,
+  TestCompAddingActivity,
 };
