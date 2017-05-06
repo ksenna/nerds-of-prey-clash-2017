@@ -59,12 +59,15 @@ export default class NavigationRouter extends Component {
             <Scene 
               key="tabProfile"
               title="PROFILE" 
+              onRight={()=>alert("Hello demo!")}
+              rightTitle="EDIT"
               icon={TabIcon}
               imageIcon={Images.profileIcon}
               imageIconActivated={Images.profileIconActive}
               component={ProfileScreen}
               title="Profile"
-              titleStyle={styles.navBarTitle}/>
+              titleStyle={styles.navBarTitle}
+              rightButtonTextStyle={styles.topActionLabel}/>
           </Scene>
           <Scene key="saveConfirmationScreen"
             component={SaveConfirmationScreen}
