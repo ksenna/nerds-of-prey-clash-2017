@@ -45,6 +45,22 @@ mutation AddActivity($tsStart: String!, $tsEnd: String!, $clientId: Int, $tags: 
   }
 }`;
 
+const GET_ACTIVITIES = gql`
+query GetActivities {
+  activities {
+    id
+    tsStart
+    tsEnd
+    isBillable
+    tags {
+      name
+    }
+    clients {
+      name
+    }
+  }
+}
+`;
 
 /*
 const TIME_TOTALS = gql`
@@ -208,4 +224,5 @@ export default {
   TestCompAddingTag,
   TestCompAddingActivity,
   CLIENTS_AND_TAGS,
+  GET_ACTIVITIES,
 };
