@@ -56,7 +56,7 @@ export default class SaveConfirmationScreen extends Component {
               value={true}
             />
           </View>
-          <Text style={{fontSize: 12, color: Colors.black, paddingTop: 80}} onPress={() => Actions.tab2()}>DISCARD</Text>
+          <Text style={{fontSize: 12, color: Colors.black, paddingTop: 80}} onPress={() => Actions.tabRecord()}>DISCARD</Text>
         </View>
       </View>
     );
