@@ -16,8 +16,8 @@ query ClientsAndTagsQuery {
 }`;
 
 const TIME_TOTALS = gql`
-query GetTimeTotals($howMany: Int, $isBillable: Boolean) { 
-  totalTimeForDays(howMany: $howMany, isBillable: $isBillable) {
+query GetTimeTotals($howMany: Int) { 
+  totalTimeForDays(howMany: $howMany) {
     totals
   }
 }`;
@@ -45,6 +45,22 @@ mutation AddActivity($tsStart: String!, $tsEnd: String!, $clientId: Int, $tags: 
   }
 }`;
 
+const GET_ACTIVITIES = gql`
+query GetActivities {
+  activities {
+    id
+    tsStart
+    tsEnd
+    isBillable
+    tags {
+      name
+    }
+    clients {
+      name
+    }
+  }
+}
+`;
 
 /*
 const TIME_TOTALS = gql`
@@ -185,7 +201,7 @@ const TestCompWithClientData = compose(
 
 const TestCompWithTotalsData = graphql(TIME_TOTALS, {
   options: { variables: {
-    howMany: 5,
+    howMany: 7,
     isBillable: true,
   } },
 })(TestTotalsComp);
@@ -208,4 +224,6 @@ export default {
   TestCompAddingTag,
   TestCompAddingActivity,
   CLIENTS_AND_TAGS,
+  GET_ACTIVITIES,
+  TIME_TOTALS,
 };

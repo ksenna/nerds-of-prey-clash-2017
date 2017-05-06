@@ -5,22 +5,29 @@ import dashboardScreenStyles from './Styles/DashboardScreenStyles';
 import ActivityGraph from './ActivityGraph';
 import ActivityListItem from './ActivityListItem';
 
-export default class DashboardScreen extends Component {
+import { gql, graphql, compose, withApollo } from 'react-apollo';
+import graphQL from '../../graphqlComponents';
+
+
+const massageData = (data) => (
+  data.map((d) => ({
+    startTime: new Date(parseInt(d.tsStart, 10)), 
+    timeElapsed: new Date(parseInt(d.tsEnd, 10) - parseInt(d.tsStart, 10)), 
+    clientName: d.clients[0].name, 
+    activityName: d.tags[0].name, 
+    billable: d.isBillable
+  }))
+);
+
+class DashboardScreen extends Component {
   constructor(props) {
     super(props);
 
     const dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2});
     this.state = {
-      activityDataSource: dataSource.cloneWithRows([
-        {startTime: "2017-05-05T20:08:46.497Z", timeElapsed: "1970-01-01T00:00:01.017Z", clientName: "BMW", activityName: "#coding", billable: true}, 
-        {startTime: "2017-05-05T20:08:46.497Z", timeElapsed: "1970-01-01T00:00:01.017Z", clientName: "", activityName: "#reading", billable: false}, 
-        {startTime: "2017-05-05T20:08:46.497Z", timeElapsed: "1970-01-01T00:00:01.017Z", clientName: "Nerd Association", activityName: "#designing", billable: true}, 
-        {startTime: "2017-05-05T20:08:46.497Z", timeElapsed: "1970-01-01T00:00:01.017Z", clientName: "BMW", activityName: "#coding", billable: false}, 
-        {startTime: "2017-05-05T20:08:46.497Z", timeElapsed: "1970-01-01T00:00:01.017Z", clientName: "", activityName: "#reading", billable: false}, 
-        {startTime: "2017-05-05T20:08:46.497Z", timeElapsed: "1970-01-01T00:00:01.017Z", clientName: "Nerd Association", activityName: "#designing", billable: false}
-      ])
+      activityDataSource: dataSource.cloneWithRows([])
     };
-  } // TODO: Replace with real data
+  }
   
   render() {
     return(
@@ -34,6 +41,14 @@ export default class DashboardScreen extends Component {
     );
   }
 
+  componentWillReceiveProps({data}) {
+    if (!data.loading) {
+      this.setState({
+        activityDataSource: this.state.activityDataSource.cloneWithRows(massageData(data.activities))
+      });
+    }
+  }
+
   componentWillMount() {
     AsyncStorage.getItem("timeData").then((json) => {
       try {
@@ -45,6 +60,7 @@ export default class DashboardScreen extends Component {
         console.log("Error fetching data from AsyncStorage")
       }
     })
+
   }
 
   populateActivityListItem(rowData) {
@@ -56,3 +72,6 @@ export default class DashboardScreen extends Component {
       startTime={rowData.startTime}/>;
   }
 }
+
+const DashboardScreenwithGraphQL = graphql(graphQL.GET_ACTIVITIES)(DashboardScreen);
+export default DashboardScreenwithGraphQL;
