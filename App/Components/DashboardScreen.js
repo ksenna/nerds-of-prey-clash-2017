@@ -14,7 +14,7 @@ const massageData = (data) => (
     startTime: new Date(parseInt(d.tsStart, 10)), 
     timeElapsed: new Date(parseInt(d.tsEnd, 10) - parseInt(d.tsStart, 10)), 
     clientName: d.clients[0].name, 
-    activityName: d.tags[0].name, 
+    activityName: `#${d.tags[0].name}`, 
     billable: d.isBillable
   }))
 );
