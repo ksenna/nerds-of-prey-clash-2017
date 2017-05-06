@@ -12,7 +12,7 @@ export default StyleSheet.create({
     ...Platform.select({
       ios: {
         borderBottomColor: Colors.greyish,
-        borderBottomWidth: 0.5
+        // borderBottomWidth: 0.5
       },
       android: {
         flex: 1,
