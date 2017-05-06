@@ -3,6 +3,16 @@ import { View, Text } from 'react-native';
 import moment from 'moment';
 import styles from './Styles/ActivityListItemStyles';
 
+const formatFocusTime = (msWeek) => {
+  let hours = Math.floor(((msWeek / 1000) / 60) / 60);
+  hours = hours < 10 ? `0${hours}` : hours;
+
+  let minutes = Math.round(((msWeek / 1000) / 60) % 60);
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  return `${hours}:${minutes}`
+};
+
 export default class ActivityListItem extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +35,9 @@ export default class ActivityListItem extends Component {
   }
 
   getFormattedTimeElapsed() {
-    return moment(this.props.timeElasped).utcOffset('+0000').format('h:mm');
+    // return `${this.props.timeElapsed}`;
+    // return moment(this.props.timeElasped).utcOffset('+0000').format('h:mm');
+    return formatFocusTime(this.props.timeElapsed);
   }
 
   getActivityMetadata() {

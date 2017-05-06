@@ -9,7 +9,7 @@ import graphQL from '../../graphqlComponents';
 
 const formatFocusTime = (msArray) => {
   let msWeek = msArray.reduce((total, ms) => (
-    total + ms
+    total + parseInt(ms, 10)
   ), 0);
   let hours = Math.floor(((msWeek / 1000) / 60) / 60);
   hours = hours < 10 ? `0${hours}` : hours;
