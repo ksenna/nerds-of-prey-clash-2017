@@ -97,5 +97,35 @@ export default StyleSheet.create({
         fontFamily: Fonts.type.androidAccent
       }
     })
+  },
+
+  buttonContainer: {
+    flexDirection: 'row',
+    paddingTop: 5,
+    paddingLeft: 25
+  },
+
+  leftButton: {
+    backgroundColor: '#1d57ff',
+    height: 2,
+    width: 55
+  },
+
+  rightButton: {
+    backgroundColor: Colors.warmGrey,
+    height: 2,
+    width: 70
+  },
+
+  leftButtonBigger: {
+    backgroundColor: '#1d57ff',
+    height: 2,
+    width: 95
+  },
+
+  rightButtonSmaller: {
+    backgroundColor: Colors.warmGrey,
+    height: 2,
+    width: 30
   }
 })
